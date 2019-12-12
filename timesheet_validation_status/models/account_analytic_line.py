@@ -46,8 +46,25 @@ class TimesheetEntry(models.Model):
             line.check_timesheet_validation_access()
         return line
 
+    def check_validated_timesheet_write_access(self):
+        """Check whether or not the user is allowed to modify a validated timesheets.
+
+        This method is intended to be inherited in other modules to add
+        specific validation checks.
+
+        By default, only the timesheet manager is allowed to validate timesheets.
+        """
+        if not self.env.user.has_group('hr_timesheet.group_timesheet_manager'):
+            raise ValidationError(_(
+                'You are not authorized to modify a validated timesheet.'
+            ))
+
     @api.multi
     def write(self, vals):
+        validated_timesheets = self.filtered(lambda t: t.validated_timesheet)
+        if validated_timesheets:
+            validated_timesheets.check_validated_timesheet_write_access()
+
         super().write(vals)
         if vals.get('validated_timesheet'):
             self.check_timesheet_validation_access()

@@ -52,8 +52,13 @@ msgid "Validated Timesheet"
 msgstr "Feuille de temps validée"
 
 #. module: timesheet_validation_status
+#: code:addons/timesheet_validation_status/models/account_analytic_line.py:0
+#, python-format
+msgid "You are not authorized to modify a validated timesheet."
+msgstr "Vous n'êtes pas autorisé à modifier une ligne de temps validée."
+
+#. module: timesheet_validation_status
 #: code:addons/timesheet_validation_status/models/account_analytic_line.py:27
 #, python-format
 msgid "You are not authorized to validate timesheets."
 msgstr "Vous n'êtes pas autorisé à valider les feuilles de temps."
-

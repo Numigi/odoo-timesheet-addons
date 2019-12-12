@@ -68,3 +68,13 @@ class TestTimesheetValidation(common.SavepointCase):
         self.line_1.project_id = False
         with pytest.raises(ValidationError):
             self.line_1.validate_timesheet_entries()
+
+    def test_if_not_manager__can_not_modify_validated_timesheet(self):
+        self.line_1.validated_timesheet = True
+        with pytest.raises(ValidationError):
+            self.line_1.sudo(self.user).write({'name': 'Some Value'})
+
+    def test_if_manager__can_modify_validated_timesheet(self):
+        self.line_1.validated_timesheet = True
+        self.user.groups_id |= self.manager_group
+        self.line_1.sudo(self.user).write({'name': 'Some Value'})
