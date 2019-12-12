@@ -30,8 +30,8 @@ After validating the timesheets, I notice that the checkbox ``Approved`` is chec
 
 .. image:: static/description/timesheets_validated.png
 
-Validated / To Validate Timesheets
-----------------------------------
+Validated / To Validate Filters
+-------------------------------
 Two filters are are added in the list view of timesheets.
 
 * Validated
