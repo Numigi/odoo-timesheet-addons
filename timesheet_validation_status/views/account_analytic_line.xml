@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="timesheet_list_with_validation_status" model="ir.ui.view">
+        <field name="name">Timesheet List: Add validation status</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+        <field name="arch" type="xml">
+            <field name="task_id" position="after">
+                <field name="validated_timesheet" string="Validated"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="timesheet_search_with_validation_status" model="ir.ui.view">
+        <field name="name">Timesheet Search: Add validation status filters</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_search"/>
+        <field name="arch" type="xml">
+            <separator position="after">
+                <filter name="validated_timesheets" string="Validated" domain="[('validated_timesheet', '=', True)]"/>
+                <filter name="timesheets_to_validate" string="To Validate" domain="[('validated_timesheet', '=', False)]"/>
+                <separator/>
+            </separator>
+        </field>
+    </record>
+
+    <record id="action_validate_timesheets" model="ir.actions.server">
+        <field name="name">Validate Timesheets</field>
+        <field name="model_id" ref="analytic.model_account_analytic_line"/>
+        <field name="binding_model_id" ref="analytic.model_account_analytic_line"/>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="code">
+records.validate_timesheet_entries()
+        </field>
+    </record>
+
+</odoo>

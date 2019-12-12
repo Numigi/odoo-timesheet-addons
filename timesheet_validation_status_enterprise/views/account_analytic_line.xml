@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="timesheet_search_without_duplicate_validation_status_filters" model="ir.ui.view">
+        <field name="name">Timesheet Search: prevent duplicate validation status filters</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="timesheet_validation_status.timesheet_search_with_validation_status"/>
+        <field name="arch" type="xml">
+            <!--
+                The module timesheet_grid has its own filters.
+                The filters added by timesheet_validation_status are therefore duplicates in Odoo enterprise.
+            -->
+            <filter name="validated_timesheets" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </filter>
+            <filter name="timesheets_to_validate" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </filter>
+        </field>
+    </record>
+
+    <record id="timesheet_view_grid_with_validation_button_replaced" model="ir.ui.view">
+        <field name="name">Timesheet Grid: replace the validation button</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="timesheet_grid.timesheet_view_grid_by_employee_validation"/>
+        <field name="arch" type="xml">
+            <button name="action_validate_timesheet" position="replace">
+                <button type="object" class="btn-primary" name="validate_timesheet_entries" string="Validate"/>
+            </button>
+        </field>
+    </record>
+
+</odoo>
