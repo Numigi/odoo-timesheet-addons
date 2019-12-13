@@ -2,7 +2,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 from odoo import api, fields, models, _
-from odoo.exceptions import ValidationError
+from odoo.exceptions import AccessError
 
 
 class TimesheetEntry(models.Model):
@@ -24,14 +24,14 @@ class TimesheetEntry(models.Model):
         By default, only the timesheet manager is allowed to validate timesheets.
         """
         if not self.env.user.has_group('hr_timesheet.group_timesheet_manager'):
-            raise ValidationError(_(
+            raise AccessError(_(
                 'You are not authorized to validate timesheets.'
             ))
 
     def validate_timesheet_entries(self):
         lines_without_project = self.filtered(lambda l: not l.project_id)
         if lines_without_project:
-            raise ValidationError(_(
+            raise AccessError(_(
                 'Some analytic lines selected for validation are not timesheets: '
                 '\n\n'
                 '{lines}'
@@ -55,7 +55,7 @@ class TimesheetEntry(models.Model):
         By default, only the timesheet manager is allowed to validate timesheets.
         """
         if not self.env.user.has_group('hr_timesheet.group_timesheet_manager'):
-            raise ValidationError(_(
+            raise AccessError(_(
                 'You are not authorized to modify a validated timesheet.'
             ))
 

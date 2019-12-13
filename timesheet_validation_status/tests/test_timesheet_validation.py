@@ -2,7 +2,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 import pytest
-from odoo.exceptions import ValidationError
+from odoo.exceptions import AccessError
 from odoo.tests import common
 
 
@@ -43,7 +43,7 @@ class TestTimesheetValidation(common.SavepointCase):
 
     def test_user_can_not_validate_timesheets(self):
         self.user.groups_id |= self.user_group
-        with pytest.raises(ValidationError):
+        with pytest.raises(AccessError):
             self.line_1.sudo(self.user).validate_timesheet_entries()
 
     def test_validate_multiple_timesheets(self):
@@ -57,21 +57,21 @@ class TestTimesheetValidation(common.SavepointCase):
         assert self.line_1.validated_timesheet
 
     def test_user_can_not_change_the_validation_status(self):
-        with pytest.raises(ValidationError):
+        with pytest.raises(AccessError):
             self.line_1.sudo(self.user).write({'validated_timesheet': True})
 
     def test_user_can_not_create_a_validated_timesheet(self):
-        with pytest.raises(ValidationError):
+        with pytest.raises(AccessError):
             self.line_1.sudo(self.user).copy({'validated_timesheet': True})
 
     def test_if_not_timesheet_line__can_not_validate_line(self):
         self.line_1.project_id = False
-        with pytest.raises(ValidationError):
+        with pytest.raises(AccessError):
             self.line_1.validate_timesheet_entries()
 
     def test_if_not_manager__can_not_modify_validated_timesheet(self):
         self.line_1.validated_timesheet = True
-        with pytest.raises(ValidationError):
+        with pytest.raises(AccessError):
             self.line_1.sudo(self.user).write({'name': 'Some Value'})
 
     def test_if_manager__can_modify_validated_timesheet(self):
