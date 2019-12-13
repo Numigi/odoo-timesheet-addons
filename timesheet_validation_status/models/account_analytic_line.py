@@ -29,6 +29,7 @@ class TimesheetEntry(models.Model):
             ))
 
     def validate_timesheet_entries(self):
+        self.check_timesheet_validation_access()
         lines_without_project = self.filtered(lambda l: not l.project_id)
         if lines_without_project:
             raise AccessError(_(
@@ -37,7 +38,7 @@ class TimesheetEntry(models.Model):
                 '{lines}'
             ).format(lines='\n'.join(lines_without_project.mapped('display_name'))))
 
-        self.write({'validated_timesheet': True})
+        self.sudo().write({'validated_timesheet': True})
 
     @api.model
     def create(self, vals):
@@ -66,6 +67,6 @@ class TimesheetEntry(models.Model):
             validated_timesheets.check_validated_timesheet_write_access()
 
         super().write(vals)
-        if vals.get('validated_timesheet'):
+        if vals.get('validated_timesheet') and not self.env.user._is_superuser():
             self.check_timesheet_validation_access()
         return True
