@@ -1,0 +1,64 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* timesheet_validation_status
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-12 17:30+0000\n"
+"PO-Revision-Date: 2019-12-12 17:30+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: timesheet_validation_status
+#: model:ir.model,name:timesheet_validation_status.model_account_analytic_line
+msgid "Analytic Line"
+msgstr ""
+
+#. module: timesheet_validation_status
+#: code:addons/timesheet_validation_status/models/account_analytic_line.py:34
+#, python-format
+msgid "Some analytic lines selected for validation are not timesheets: \n"
+"\n"
+"{lines}"
+msgstr "Certaines lignes analytiques sélectionnées pour validation ne sont pas des feuilles de temps : \n"
+"\n"
+"{lines}"
+
+#. module: timesheet_validation_status
+#: model_terms:ir.ui.view,arch_db:timesheet_validation_status.timesheet_search_with_validation_status
+msgid "To Validate"
+msgstr "À Valider"
+
+#. module: timesheet_validation_status
+#: model:ir.actions.server,name:timesheet_validation_status.action_validate_timesheets
+msgid "Validate Timesheets"
+msgstr "Valider les feuilles de temps"
+
+#. module: timesheet_validation_status
+#: model_terms:ir.ui.view,arch_db:timesheet_validation_status.timesheet_list_with_validation_status
+#: model_terms:ir.ui.view,arch_db:timesheet_validation_status.timesheet_search_with_validation_status
+msgid "Validated"
+msgstr "Validée"
+
+#. module: timesheet_validation_status
+#: model:ir.model.fields,field_description:timesheet_validation_status.field_account_analytic_line__validated_timesheet
+msgid "Validated Timesheet"
+msgstr "Feuille de temps validée"
+
+#. module: timesheet_validation_status
+#: code:addons/timesheet_validation_status/models/account_analytic_line.py:0
+#, python-format
+msgid "You are not authorized to modify a validated timesheet."
+msgstr "Vous n'êtes pas autorisé à modifier une ligne de temps validée."
+
+#. module: timesheet_validation_status
+#: code:addons/timesheet_validation_status/models/account_analytic_line.py:27
+#, python-format
+msgid "You are not authorized to validate timesheets."
+msgstr "Vous n'êtes pas autorisé à valider les feuilles de temps."

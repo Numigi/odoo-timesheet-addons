@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="employee_form_with_timesheet_validation_date_hidden" model="ir.ui.view">
+        <field name="name">Employee Form: Hide timesheet validation date field</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="timesheet_grid.hr_employee_view_form_inherit_timesheet_validation"/>
+        <field name="arch" type="xml">
+            <field name="timesheet_validated" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+</odoo>

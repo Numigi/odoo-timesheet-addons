@@ -11,6 +11,8 @@
     'category': 'Other',
     'summary': 'Install all addons required for testing.',
     'depends': [
+        'timesheet_validation_status',
+        'timesheet_validation_status_enterprise',
     ],
     'installable': True,
 }
