@@ -1,10 +1,8 @@
 # © 2019 Numigi (tm) and all its contributors (https://bit.ly/numigiens)
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-import pytest
 from ddt import ddt, data, unpack
 from datetime import datetime, timedelta
-from odoo.exceptions import AccessError
 from odoo.tests import common
 
 
