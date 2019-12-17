@@ -1,0 +1,102 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* recording_lang
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-17 15:22+0000\n"
+"PO-Revision-Date: 2019-12-17 10:25-0500\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 2.0.6\n"
+
+#. module: payroll_period
+#: model:ir.model.fields,field_description:payroll_period.field_payroll_period__active
+msgid "Active"
+msgstr "Actif"
+
+#. module: payroll_period
+#: code:addons/payroll_period/models/payroll_period.py:44
+#, python-format
+msgid "Another period ({period}) is overlapping the selected date range."
+msgstr "Une autre période ({period}) chevauche intervalle de dates sélectionné."
+
+#. module: payroll_period
+#: model_terms:ir.ui.view,arch_db:payroll_period.payroll_period_search
+msgid "Archived"
+msgstr "Archivé"
+
+#. module: payroll_period
+#: model:ir.model.fields,field_description:payroll_period.field_payroll_period__company_id
+msgid "Company"
+msgstr "Société"
+
+#. module: payroll_period
+#: model:ir.model.fields,field_description:payroll_period.field_payroll_period__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: payroll_period
+#: model:ir.model.fields,field_description:payroll_period.field_payroll_period__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: payroll_period
+#: model:ir.model.fields,field_description:payroll_period.field_payroll_period__date_from
+msgid "Date From"
+msgstr "Date de début"
+
+#. module: payroll_period
+#: model:ir.model.fields,field_description:payroll_period.field_payroll_period__date_to
+msgid "Date To"
+msgstr "Date de fin"
+
+#. module: payroll_period
+#: model:ir.model.fields,field_description:payroll_period.field_payroll_period__display_name
+msgid "Display Name"
+msgstr "Nom"
+
+#. module: payroll_period
+#: model:ir.model.fields,field_description:payroll_period.field_payroll_period__id
+msgid "ID"
+msgstr ""
+
+#. module: payroll_period
+#: model:ir.model.fields,field_description:payroll_period.field_payroll_period____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: payroll_period
+#: model:ir.model.fields,field_description:payroll_period.field_payroll_period__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: payroll_period
+#: model:ir.model.fields,field_description:payroll_period.field_payroll_period__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: payroll_period
+#: model:ir.model.fields,field_description:payroll_period.field_payroll_period__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: payroll_period
+#: model:ir.model,name:payroll_period.model_payroll_period
+#: model_terms:ir.ui.view,arch_db:payroll_period.payroll_period_form
+msgid "Payroll Period"
+msgstr "Période de paie"
+
+#. module: payroll_period
+#: model:ir.actions.act_window,name:payroll_period.payroll_period_action
+#: model_terms:ir.ui.view,arch_db:payroll_period.payroll_period_list
+#: model_terms:ir.ui.view,arch_db:payroll_period.payroll_period_search
+msgid "Payroll Periods"
+msgstr "Périodes de paie"

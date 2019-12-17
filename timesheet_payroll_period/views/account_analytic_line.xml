@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="timesheet_form_with_payroll_period" model="ir.ui.view">
+        <field name="name">Timesheet Form: add payroll period</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[1]/group[2]" position="after">
+                <group name="payroll" string="Payroll" groups="hr_timesheet.group_timesheet_manager">
+                    <field name="payroll_period_id" string="Period"/>
+                    <field name="payroll_period_week" string="Week Number"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="timesheet_list_with_payroll_period" model="ir.ui.view">
+        <field name="name">Timesheet List: add payroll period</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+        <field name="arch" type="xml">
+            <field name="unit_amount" position="after">
+                <field name="payroll_period_date_from"
+                    groups="hr_timesheet.group_timesheet_manager"/>
+                <field name="payroll_period_date_to"
+                    groups="hr_timesheet.group_timesheet_manager"/>
+                <field name="payroll_period_week"
+                    string="Week Number"
+                    groups="hr_timesheet.group_timesheet_manager"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

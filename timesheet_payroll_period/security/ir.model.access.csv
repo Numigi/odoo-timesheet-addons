@@ -1,0 +1,2 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_timesheet_payroll_period_manager,name_timesheet_payroll_period_manager,payroll_period.model_payroll_period,hr_timesheet.group_timesheet_manager,1,1,1,1
