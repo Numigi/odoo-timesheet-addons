@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <menuitem id="payroll_period_menu"
+              name="Payroll Periods"
+              action="payroll_period.payroll_period_action"
+              parent="hr_timesheet.hr_timesheet_menu_configuration"
+              groups="hr_timesheet.group_timesheet_manager"
+              sequence="10"
+              />
+
+</odoo>

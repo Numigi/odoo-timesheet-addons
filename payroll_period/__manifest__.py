@@ -2,19 +2,21 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 {
-    'name': 'Main Module',
+    'name': 'Payroll Periods',
     'version': '1.0.0',
     'author': 'Numigi',
     'maintainer': 'Numigi',
     'website': 'https://www.numigi.com',
     'license': 'LGPL-3',
-    'category': 'Other',
-    'summary': 'Install all addons required for testing.',
+    'category': 'Timesheet',
+    'summary': 'Add payroll periods',
     'depends': [
-        'payroll_period',
-        'timesheet_payroll_period',
-        'timesheet_validation_status',
-        'timesheet_validation_status_enterprise',
+        'base',
+    ],
+    'data': [
+        'security/ir.model.access.csv',
+        'security/ir_rule.xml',
+        'views/payroll_period.xml',
     ],
     'installable': True,
 }
