@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="timesheet_multi_wizard_form" model="ir.ui.view">
+        <field name="name">Timesheet Multi Wizard</field>
+        <field name="model">timesheet.multi.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Timesheet Multi Wizard">
+                <sheet>
+                    <group>
+                        <group name="group_1">
+                            <field name="project_id"/>
+                            <field name="employee_id"/>
+                        </group>
+                        <group name="group_2">
+                            <field name="date"/>
+                        </group>
+                        <field name="line_ids">
+                            <tree editable="bottom">
+                                <field name="task_id" domain="[('project_id', '=', parent.project_id)]"/>
+                                <field name="description"/>
+                                <field name="time_spent" widget="timesheet_uom"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Save" class="btn btn-primary" type="object" name="action_save"/>
+                    <button string="Save and New" class="btn btn-primary" type="object" name="action_save_and_new"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>
