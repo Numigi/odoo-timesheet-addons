@@ -2,7 +2,7 @@ odoo.define("timesheet_multi_line_wizard_grid.GridController", function (require
 "use strict";
 
 var core = require("web.core");
-var dialogs = require('web.view_dialogs');
+var dialogs = require("web.view_dialogs");
 
 var _t = core._t;
 
@@ -24,7 +24,7 @@ require("web_grid.GridController").include({
 
     _openTimesheetMultiWizard(){
         var context = this.model.getContext();
-        this.trigger_up('execute_action', {
+        this.trigger_up("execute_action", {
             action_data: {
                 name: "get_wizard_open_action",
                 type: "object",
