@@ -11,24 +11,14 @@ This module adds a menu entry in the ``Timesheets`` application to configure pay
 
 Timesheets
 ----------
-The payroll period is added to timesheet entries (analytic lines).
-
-In the list view, as ``Timesheet / Manager``, I can see the following new fields:
-
-* Payroll Period Start Date
-* Payroll Period End Date
-* Payroll Period Week
-
-.. image:: static/description/timesheet_list.png
-
-These fields are automatically computed based on the configured payroll periods.
-
-In the form view of timesheet entries, I can see the following new fields:
+In the form view of timesheet entries, as ``Timesheet / Manager``, I can see the following new fields:
 
 * Payroll Period
 * Payroll Period Week
 
 .. image:: static/description/timesheet_form.png
+
+These fields are automatically computed based on the configured payroll periods.
 
 By default, non-members of ``Timesheet / Manager`` do not see the new fields.
 
