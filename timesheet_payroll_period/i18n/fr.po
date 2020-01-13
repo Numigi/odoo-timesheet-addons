@@ -34,16 +34,6 @@ msgid "Payroll Period"
 msgstr "Période de paie"
 
 #. module: timesheet_payroll_period
-#: model:ir.model.fields,field_description:timesheet_payroll_period.field_account_analytic_line__payroll_period_date_to
-msgid "Payroll Period End Date"
-msgstr "Début période de paie"
-
-#. module: timesheet_payroll_period
-#: model:ir.model.fields,field_description:timesheet_payroll_period.field_account_analytic_line__payroll_period_date_from
-msgid "Payroll Period Start Date"
-msgstr "Fin période de paie"
-
-#. module: timesheet_payroll_period
 #: model:ir.model.fields,field_description:timesheet_payroll_period.field_account_analytic_line__payroll_period_week
 msgid "Payroll Period Week"
 msgstr "Semaine période de paie"
@@ -60,6 +50,5 @@ msgstr "Période"
 
 #. module: timesheet_payroll_period
 #: model_terms:ir.ui.view,arch_db:timesheet_payroll_period.timesheet_form_with_payroll_period
-#: model_terms:ir.ui.view,arch_db:timesheet_payroll_period.timesheet_list_with_payroll_period
 msgid "Week Number"
 msgstr "Numéro de semaine"

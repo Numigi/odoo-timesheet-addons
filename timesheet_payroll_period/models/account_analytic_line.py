@@ -36,18 +36,6 @@ class TimesheetEntry(models.Model):
 
             line.payroll_period_id = period_cache[index]
 
-    payroll_period_date_from = fields.Date(
-        string="Payroll Period Start Date",
-        related='payroll_period_id.date_from',
-        store=True,
-    )
-
-    payroll_period_date_to = fields.Date(
-        string="Payroll Period End Date",
-        related='payroll_period_id.date_to',
-        store=True,
-    )
-
     payroll_period_week = fields.Integer(
         string="Payroll Period Week",
         compute='_compute_payroll_period_week',
