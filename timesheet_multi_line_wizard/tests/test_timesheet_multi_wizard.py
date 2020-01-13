@@ -100,6 +100,22 @@ class TestTimesheetPayrollPeriod(common.SavepointCase):
         assert new_wizard.employee_id == self.employee
         assert new_wizard.date == self.yesterday
 
+    def test_if_employee_has_same_company__employee_in_default_value(self):
+        defaults = self._get_wizard_default_values(self.user)
+        assert defaults['employee_id'] == self.employee.id
+
+    def test_if_employee_has_not_same_company__employee_not_in_default_value(self):
+        new_company = self.env['res.company'].create({'name': 'New Company'})
+        self.employee.company_id = new_company
+        defaults = self._get_wizard_default_values(self.user)
+        assert not defaults['employee_id']
+
+    @classmethod
+    def _get_wizard_default_values(cls, user):
+        wizard_obj = cls.env['timesheet.multi.wizard']
+        fields = list(wizard_obj._fields)
+        return wizard_obj.sudo(user).default_get(fields)
+
     @classmethod
     def _create_wizard(cls, project, employee, date_):
         return cls.env['timesheet.multi.wizard'].create({

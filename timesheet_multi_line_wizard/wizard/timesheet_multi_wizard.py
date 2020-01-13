@@ -10,8 +10,10 @@ class TimesheetMultiWizard(models.TransientModel):
     _description = 'Timesheet Multi Wizard'
 
     def _get_user_employee(self):
-        employees = self.env.user.employee_ids
-        return employees[0] if employees else None
+        user = self.env.user
+        employees = user.employee_ids.sudo()
+        employees_with_same_company = employees.filtered(lambda e: e.company_id == user.company_id)
+        return employees_with_same_company[0] if employees_with_same_company else None
 
     project_id = fields.Many2one(
         'project.project',
