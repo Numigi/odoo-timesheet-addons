@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="timesheet_list_with_description_after_task" model="ir.ui.view">
+        <field name="name">Timesheet List: replace description after task</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+        <field name="arch" type="xml">
+            <field name="name" position="replace"/>
+            <field name="task_id" position="after">
+                <field name="name"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
