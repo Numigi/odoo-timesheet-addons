@@ -40,6 +40,13 @@ class TestPayrollPeriods(SavepointCase):
                 self.today + timedelta(date_to_delta),
             )
 
+    def test_if_date_from_after_date_to__error_raised(self):
+        with pytest.raises(ValidationError):
+            self._create_period(
+                self.today - timedelta(1),
+                self.today - timedelta(2),
+            )
+
     def test_if_different_company_overlaping_period__error_raised(self):
         assert self.period_today.copy({'company_id': self.other_company.id})
 

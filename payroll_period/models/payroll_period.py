@@ -45,6 +45,18 @@ class PayrollPeriod(models.Model):
                     'Another period ({period}) is overlapping the selected date range.'
                 ).format(period=overlapping_periods[0].display_name))
 
+    @api.constrains('date_from', 'date_to')
+    def check_date_from_before_date_to(self):
+        for period in self:
+            if period.date_from > period.date_to:
+                raise ValidationError(_(
+                    'The start of the period ({date_from}) must be before '
+                    'the end of the period ({date_to}).'
+                ).format(
+                    date_from=period.date_from,
+                    date_to=period.date_to,
+                ))
+
     def find_period(self, date_, company):
         """Find a period for the given date and company.
 

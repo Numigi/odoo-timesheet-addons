@@ -100,3 +100,11 @@ msgstr "Période de paie"
 #: model_terms:ir.ui.view,arch_db:payroll_period.payroll_period_search
 msgid "Payroll Periods"
 msgstr "Périodes de paie"
+
+#. module: payroll_period
+#: code:addons/payroll_period/models/payroll_period.py:0
+#, python-format
+msgid "The start of the period ({date_from}) must be before "
+"the end of the period ({date_to})."
+msgstr "La date de début de la période ({date_from}) doit être inférieure à la "
+"date de fin de celle-ci ({date_to})."
