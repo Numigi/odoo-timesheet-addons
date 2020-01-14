@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="payroll_preparation_line_form" model="ir.ui.view">
+        <field name="name">Payroll Entry Form</field>
+        <field name="model">payroll.preparation.line</field>
+        <field name="arch" type="xml">
+            <form string="Payroll Entry">
+                <header>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                    </div>
+                    <group>
+                        <group name="group_1">
+                            <field name="period_id"/>
+                            <field name="week"/>
+                            <field name="date"/>
+                        </group>
+                        <group name="group_2">
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="employee_id"/>
+                            <field name="analytic_account_id"/>
+                            <field name="code"/>
+                            <field name="duration" widget="float_time"/>
+                            <field name="amount"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="payroll_preparation_line_list" model="ir.ui.view">
+        <field name="name">Payroll Entry List</field>
+        <field name="model">payroll.preparation.line</field>
+        <field name="arch" type="xml">
+            <tree string="Payroll Entries" editable="top">
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="period_id"/>
+                <field name="week"/>
+                <field name="date"/>
+                <field name="employee_id"/>
+                <field name="analytic_account_id"/>
+                <field name="code"/>
+                <field name="duration" widget="float_time"/>
+                <field name="amount"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="payroll_preparation_line_search" model="ir.ui.view">
+        <field name="name">Payroll Entry Search</field>
+        <field name="model">payroll.preparation.line</field>
+        <field name="arch" type="xml">
+            <search string="Payroll Entries">
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="period_id"/>
+                <field name="employee_id"/>
+                <field name="analytic_account_id"/>
+                <field name="code"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="payroll_preparation_line_action" model="ir.actions.act_window">
+        <field name="name">Payroll Entries</field>
+        <field name="res_model">payroll.preparation.line</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+</odoo>
