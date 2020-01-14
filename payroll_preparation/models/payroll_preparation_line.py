@@ -1,7 +1,8 @@
 # © 2019 - today Numigi (tm) and all its contributors (https://bit.ly/numigiens)
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from odoo import api, fields, models
+from odoo import api, fields, models, _
+from odoo.exceptions import ValidationError
 
 
 class PayrollPreparationLine(models.Model):
@@ -58,3 +59,17 @@ class PayrollPreparationLine(models.Model):
         for line in lines_with_period:
             number_of_days = (line.date - line.period_id.date_from).days
             line.week = (number_of_days // 7) + 1
+
+    @api.constrains('date', 'period_id')
+    def _check_date_matches_period(self):
+        lines_with_date_and_period = self.filtered(lambda l: l.date and l.period_id)
+
+        for line in lines_with_date_and_period:
+            period = line.period_id
+            date_matches_period = period.date_from <= line.date <= period.date_to
+
+            if not date_matches_period:
+                raise ValidationError(_(
+                    'The selected date ({date}) does not match the period ({period}) '
+                    'for the payroll entry {entry}.'
+                ))
