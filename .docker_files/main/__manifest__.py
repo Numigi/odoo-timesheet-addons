@@ -12,6 +12,7 @@
     'summary': 'Install all addons required for testing.',
     'depends': [
         'payroll_period',
+        'payroll_preparation',
         'timesheet_list_description_after_task',
         'timesheet_list_employee',
         'timesheet_multi_line_wizard',

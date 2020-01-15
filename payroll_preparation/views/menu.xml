@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <menuitem
+        id="menu_payroll_preparation_root"
+        name="Payroll Preparation"
+        web_icon="payroll_preparation,static/description/icon.png"
+        sequence="100"
+        groups="group_user"
+        />
+
+    <menuitem
+        id="menu_payroll_preparation_lines"
+        name="Payroll Entries"
+        parent="menu_payroll_preparation_root"
+        action="payroll_preparation_line_action"
+        sequence="100"
+        />
+
+    <menuitem
+        id="menu_config"
+        name="Configuration"
+        parent="menu_payroll_preparation_root"
+        groups="group_manager"
+        sequence="500"
+        />
+
+    <menuitem id="menu_payroll_period"
+        name="Periods"
+        action="payroll_period.payroll_period_action"
+        parent="menu_config"
+        sequence="200"
+        />
+
+</odoo>
