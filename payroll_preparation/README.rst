@@ -6,7 +6,7 @@ This module defines an application to manage the preparation of payroll.
 
 Context
 -------
-By preparation of payroll, we meen the gathering of relevant data to process a payslip.
+By preparation of payroll, we mean the gathering of relevant data to process a payslip.
 It is a very distinct process from the actual computing of payroll.
 
 Many companies outsource the production of their payslips.
