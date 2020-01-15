@@ -23,8 +23,8 @@ class PayrollPreparationLine(models.Model):
         ondelete='restrict',
         track_visibility="onchange",
     )
-    week = fields.Integer(
-        compute='_compute_week',
+    week_number = fields.Integer(
+        compute='_compute_week_number',
         store=True,
         index=True,
     )
@@ -54,11 +54,11 @@ class PayrollPreparationLine(models.Model):
     )
 
     @api.depends('period_id', 'date')
-    def _compute_week(self):
+    def _compute_week_number(self):
         lines_with_period = self.filtered(lambda l: l.period_id)
         for line in lines_with_period:
             number_of_days = (line.date - line.period_id.date_from).days
-            line.week = (number_of_days // 7) + 1
+            line.week_number = (number_of_days // 7) + 1
 
     @api.constrains('date', 'period_id')
     def _check_date_matches_period(self):
@@ -72,4 +72,8 @@ class PayrollPreparationLine(models.Model):
                 raise ValidationError(_(
                     'The selected date ({date}) does not match the period ({period}) '
                     'for the payroll entry {entry}.'
+                ).format(
+                    date=line.date,
+                    period=period.display_name,
+                    entry=line.display_name,
                 ))

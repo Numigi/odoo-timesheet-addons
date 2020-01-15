@@ -296,6 +296,6 @@ msgid "User"
 msgstr "Utilisateur"
 
 #. module: payroll_preparation
-#: model:ir.model.fields,field_description:payroll_preparation.field_payroll_preparation_line__week
-msgid "Week"
+#: model:ir.model.fields,field_description:payroll_preparation.field_payroll_preparation_line__week_number
+msgid "week_number"
 msgstr "Semaine"

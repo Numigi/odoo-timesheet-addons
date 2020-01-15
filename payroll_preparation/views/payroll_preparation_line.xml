@@ -14,7 +14,7 @@
                     <group>
                         <group name="group_1">
                             <field name="period_id"/>
-                            <field name="week"/>
+                            <field name="week_number"/>
                             <field name="date"/>
                         </group>
                         <group name="group_2">
@@ -38,7 +38,7 @@
             <tree string="Payroll Entries" editable="top">
                 <field name="company_id" groups="base.group_multi_company"/>
                 <field name="period_id"/>
-                <field name="week"/>
+                <field name="week_number"/>
                 <field name="date"/>
                 <field name="employee_id"/>
                 <field name="analytic_account_id"/>

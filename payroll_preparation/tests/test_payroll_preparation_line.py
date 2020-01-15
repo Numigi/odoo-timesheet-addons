@@ -57,7 +57,7 @@ class TestPeriodConstraints(SavepointCase):
         (13, 2),
     )
     @unpack
-    def test_week(self, delta, week):
+    def test_week_number(self, delta, week_number):
         date = self.today + timedelta(delta)
         line = self._create_payroll_preperation_line(period=self.period, date=date)
-        assert line.week == week
+        assert line.week_number == week_number
