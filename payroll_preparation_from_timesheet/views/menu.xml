@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <menuitem id="menu_payroll_period"
+        name="Generate Entries"
+        action="payroll_preparation_from_timesheet_action"
+        parent="payroll_preparation.menu_payroll_preparation_root"
+        sequence="200"
+        groups="payroll_preparation.group_manager"
+        />
+
+</odoo>

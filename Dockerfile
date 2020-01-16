@@ -17,6 +17,7 @@ USER odoo
 
 COPY payroll_period /mnt/extra-addons/payroll_period
 COPY payroll_preparation /mnt/extra-addons/payroll_preparation
+COPY payroll_preparation_from_timesheet /mnt/extra-addons/payroll_preparation_from_timesheet
 COPY timesheet_list_description_after_task /mnt/extra-addons/timesheet_list_description_after_task
 COPY timesheet_list_employee /mnt/extra-addons/timesheet_list_employee
 COPY timesheet_multi_line_wizard /mnt/extra-addons/timesheet_multi_line_wizard
