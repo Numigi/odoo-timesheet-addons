@@ -73,7 +73,7 @@ class TimesheetMultiWizardLine(models.TransientModel):
         'project.task',
         required=True,
     )
-    description = fields.Text(required=True)
+    description = fields.Text()
     time_spent = fields.Float(required=True)
 
     def _create_timesheet_entry(self):
