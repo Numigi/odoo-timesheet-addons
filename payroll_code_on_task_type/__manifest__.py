@@ -2,22 +2,19 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 {
-    'name': 'Payroll Preparation From Timesheet',
+    'name': 'Payroll Earning Code on Task Type',
     'version': '1.0.0',
     'author': 'Numigi',
     'maintainer': 'Numigi',
     'website': 'https://www.numigi.com',
     'license': 'LGPL-3',
     'category': 'Payroll',
-    'summary': 'Import payroll entries from timesheets',
+    'summary': 'Adds payroll earning code on task types.',
     'depends': [
-        'payroll_preparation',
-        'timesheet_payroll_period',
+        'project_task_type',
     ],
     'data': [
-        'wizard/payroll_preparation_from_timesheet.xml',
-        'views/menu.xml',
-        'security/ir.model.access.csv',
+        'views/task_type.xml',
     ],
     'installable': True,
 }
