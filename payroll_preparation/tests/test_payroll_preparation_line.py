@@ -41,6 +41,10 @@ class TestPeriodConstraints(SavepointCase):
         with pytest.raises(ValidationError):
             self._create_payroll_preperation_line(period=self.period, date=date)
 
+    def test_if_no_date__week_not_computed(self):
+        line = self._create_payroll_preperation_line(period=self.period, date=None)
+        assert not line.week_number
+
     def _create_payroll_preperation_line(self, period, date):
         return self.env['payroll.preparation.line'].create({
             'period_id': period.id,
