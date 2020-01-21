@@ -1,7 +1,9 @@
 # © 2020 - today Numigi (tm) and all its contributors (https://bit.ly/numigiens)
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
+import pytest
 from datetime import timedelta
+from odoo.exceptions import AccessError
 from .common import PayrollPreparationCase
 
 
@@ -39,3 +41,8 @@ class TestPayrollPreparationFromTimesheet(PayrollPreparationCase):
         assert entry.company_id == self.company
         assert entry.duration == expected_duration
         assert entry.date == expected_date
+
+    def test_if_is_not_manager__access_error_raised(self):
+        self.payroll_manager.groups_id -= self.env.ref('payroll_preparation.group_manager')
+        with pytest.raises(AccessError):
+            self.generate_payroll_entries(self.period)

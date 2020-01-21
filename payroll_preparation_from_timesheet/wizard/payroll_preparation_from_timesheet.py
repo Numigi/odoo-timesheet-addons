@@ -1,7 +1,8 @@
 # © 2020 - today Numigi (tm) and all its contributors (https://bit.ly/numigiens)
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from odoo import fields, models
+from odoo import fields, models, _
+from odoo.exceptions import AccessError
 
 
 class PayrollPreparationFromTimesheet(models.TransientModel):
@@ -12,8 +13,16 @@ class PayrollPreparationFromTimesheet(models.TransientModel):
     period_id = fields.Many2one('payroll.period')
 
     def action_validate(self):
+        self._check_user_access()
         self._remove_existing_payroll_entries()
         self._generate_payroll_entries()
+
+    def _check_user_access(self):
+        if not self.env.user.has_group('payroll_preparation.group_manager'):
+            raise AccessError(_(
+                'Only members of the group Payroll Preparation / Manager '
+                'are allowed to prepare the payroll.'
+            ))
 
     def _remove_existing_payroll_entries(self):
         """Remove existing (deprecated) payroll entries."""
@@ -21,7 +30,7 @@ class PayrollPreparationFromTimesheet(models.TransientModel):
             ('period_id', '=', self.period_id.id),
             ('timesheet_id', '!=', False),
         ])
-        entries_to_remove.unlink()
+        entries_to_remove.sudo().unlink()
 
     def _generate_payroll_entries(self):
         timesheets = self._find_timesheets_to_process()
@@ -39,11 +48,11 @@ class PayrollPreparationFromTimesheet(models.TransientModel):
         self._generate_salary_entry(timesheet)
 
     def _generate_salary_entry(self, timesheet):
-        vals = self._get_salary_entry_vals(timesheet)
+        vals = self.sudo()._get_salary_entry_vals(timesheet.sudo())
         self.env['payroll.preparation.line'].create(vals)
 
     def _get_salary_entry_vals(self, timesheet):
-        """Get values a salary (hourly) payroll entry.
+        """Get values for a salary (hourly) payroll entry.
 
         The amount is left to 0.
         This module does not define how the hourly rate is computed.

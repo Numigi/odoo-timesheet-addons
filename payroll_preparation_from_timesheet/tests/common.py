@@ -12,6 +12,14 @@ class PayrollPreparationCase(SavepointCase):
         super().setUpClass()
         cls.company = cls.env['res.company'].create({'name': 'Company A'})
 
+        cls.payroll_manager = cls.env['res.users'].create({
+            'name': 'payroll@manager.com',
+            'login': 'payroll@manager.com',
+            'email': 'payroll@manager.com',
+            'groups_id': [(4, cls.env.ref('payroll_preparation.group_manager').id)],
+            'company_id': cls.company.id,
+            'company_ids': [(4, cls.company.id)],
+        })
         cls.user = cls.env['res.users'].create({
             'name': 'Test User',
             'login': 'test@test.com',
@@ -43,9 +51,8 @@ class PayrollPreparationCase(SavepointCase):
 
     @classmethod
     def generate_payroll_entries(cls, period):
-        wizard = cls.env['payroll.preparation.from.timesheet'].create({
-            'period_id': period.id,
-        })
+        wizard_model = cls.env['payroll.preparation.from.timesheet'].sudo(cls.payroll_manager)
+        wizard = wizard_model.create({'period_id': period.id})
         wizard.action_validate()
 
     @classmethod
