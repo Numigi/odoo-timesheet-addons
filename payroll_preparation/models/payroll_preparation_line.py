@@ -55,8 +55,9 @@ class PayrollPreparationLine(models.Model):
 
     @api.depends('period_id', 'date')
     def _compute_week_number(self):
-        lines_with_period = self.filtered(lambda l: l.period_id)
-        for line in lines_with_period:
+        lines_with_date_and_period = self.filtered(lambda l: l.date and l.period_id)
+
+        for line in lines_with_date_and_period:
             number_of_days = (line.date - line.period_id.date_from).days
             line.week_number = (number_of_days // 7) + 1
 
