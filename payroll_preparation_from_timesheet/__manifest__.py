@@ -17,6 +17,7 @@
     'data': [
         'wizard/payroll_preparation_from_timesheet.xml',
         'views/menu.xml',
+        'security/ir.model.access.csv',
     ],
     'installable': True,
 }
