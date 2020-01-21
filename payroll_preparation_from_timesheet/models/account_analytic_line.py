@@ -18,7 +18,7 @@ class AnalyticLine(models.Model):
     @api.multi
     def unlink(self):
         for line in self:
-            if line.payroll_preparation_line_ids:
+            if line._has_payroll_entries():
                 raise ValidationError(_(
                     "You may not delete the timesheet line {} "
                     "because it is linked to a payroll entry."
@@ -36,7 +36,7 @@ class AnalyticLine(models.Model):
         protected_fields = self._get_payroll_entry_protected_fields()
         protected_field_modified = protected_fields.intersection(vals)
         for line in self:
-            if protected_field_modified and line.payroll_preparation_line_ids:
+            if protected_field_modified and line._has_payroll_entries():
                 raise ValidationError(_(
                     "You may not modify the timesheet line {} "
                     "because it is linked to a payroll entry."
@@ -54,3 +54,6 @@ class AnalyticLine(models.Model):
             'task_id',
             'unit_amount',
         }
+
+    def _has_payroll_entries(self):
+        return bool(self.sudo().payroll_preparation_line_ids)
