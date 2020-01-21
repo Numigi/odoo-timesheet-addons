@@ -11,6 +11,7 @@
     'category': 'Other',
     'summary': 'Install all addons required for testing.',
     'depends': [
+        'payroll_code_on_task_type',
         'payroll_period',
         'payroll_preparation',
         'payroll_preparation_from_timesheet',

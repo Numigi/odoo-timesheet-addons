@@ -15,6 +15,7 @@ RUN gitoo install-all --conf_file /gitoo.yml --destination "${THIRD_PARTY_ADDONS
 
 USER odoo
 
+COPY payroll_code_on_task_type /mnt/extra-addons/payroll_code_on_task_type
 COPY payroll_period /mnt/extra-addons/payroll_period
 COPY payroll_preparation /mnt/extra-addons/payroll_preparation
 COPY payroll_preparation_from_timesheet /mnt/extra-addons/payroll_preparation_from_timesheet
