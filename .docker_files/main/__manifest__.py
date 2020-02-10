@@ -15,6 +15,7 @@
         'payroll_period',
         'payroll_preparation',
         'payroll_preparation_from_timesheet',
+        'timesheet_edit_only_today',
         'timesheet_list_description_after_task',
         'timesheet_list_employee',
         'timesheet_multi_line_wizard',
