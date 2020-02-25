@@ -75,10 +75,11 @@ class TimesheetMultiWizardLine(models.TransientModel):
     )
     description = fields.Text()
     time_spent = fields.Float(required=True)
+    timesheet_line_id = fields.Many2one('account.analytic.line')
 
     def _create_timesheet_entry(self):
         vals = self._get_timesheet_vals()
-        self.env['account.analytic.line'].create(vals)
+        self.timesheet_line_id = self.env['account.analytic.line'].create(vals)
 
     def _get_timesheet_vals(self):
         wizard = self.wizard_id
