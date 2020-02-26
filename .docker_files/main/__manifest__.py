@@ -20,6 +20,7 @@
         'timesheet_list_employee',
         'timesheet_multi_line_wizard',
         'timesheet_multi_line_wizard_grid',
+        'timesheet_multi_line_wizard_security',
         'timesheet_payroll_period',
         'timesheet_validation_status',
         'timesheet_validation_status_enterprise',
