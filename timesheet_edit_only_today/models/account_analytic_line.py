@@ -5,6 +5,11 @@ from datetime import datetime
 from odoo import models, _
 from odoo.exceptions import AccessError
 
+PAST_FUTURE_DATE_ERROR_MESSAGE = _(
+    "You are not allowed to edit, create or delete timesheet entries "
+    "for past or future dates."
+)
+
 
 class TimesheetEntry(models.Model):
 
@@ -29,10 +34,11 @@ class TimesheetEntry(models.Model):
         return self.env.user.has_group('hr_timesheet.group_timesheet_manager')
 
     def _check_is_current_date_timesheet(self):
+        for line in self:
+            self.check_is_not_past_or_future_date(line.date)
+
+    def check_is_not_past_or_future_date(self, date):
         today = datetime.now().date()
-        non_current_timesheets = self.filtered(lambda l: l.project_id and l.date != today)
-        if non_current_timesheets:
-            raise AccessError(_(
-                "You are not allowed to edit, create or delete timesheet entries "
-                "for past or future dates."
-            ))
+        is_past_or_future_date = date != today
+        if is_past_or_future_date:
+            raise AccessError(PAST_FUTURE_DATE_ERROR_MESSAGE)
