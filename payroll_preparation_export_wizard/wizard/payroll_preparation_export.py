@@ -3,7 +3,6 @@
 
 import base64
 from odoo import fields, models, _
-from odoo.exceptions import AccessError
 
 DEFAULT_FILE_NAME = _('No Content.txt')
 DEFAULT_FILE_CONTENT = _(
