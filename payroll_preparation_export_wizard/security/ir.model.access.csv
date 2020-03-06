@@ -1,0 +1,2 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_payroll_preparation_export_history_user,payroll_preparation_export_history_user,model_payroll_preparation_export_history,payroll_preparation.group_user,1,0,0,0

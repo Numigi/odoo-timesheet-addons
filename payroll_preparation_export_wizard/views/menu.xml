@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <menuitem id="menu_files"
+        name="Files"
+        parent="payroll_preparation.menu_payroll_preparation_root"
+        sequence="300"
+        groups="payroll_preparation.group_manager"
+        />
+
+    <menuitem id="menu_generate_file"
+        name="Generate File"
+        action="generate_file_action"
+        parent="menu_files"
+        sequence="100"
+        groups="payroll_preparation.group_manager"
+        />
+
+    <menuitem id="menu_history"
+        name="History"
+        action="payroll_preparation_export_history_action"
+        parent="menu_files"
+        sequence="200"
+        groups="payroll_preparation.group_manager"
+        />
+
+</odoo>

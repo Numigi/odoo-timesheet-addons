@@ -49,6 +49,9 @@ class PayrollPreparationLine(models.Model):
     duration = fields.Float(
         track_visibility="onchange",
     )
+    hourly_rate = fields.Float(
+        track_visibility="onchange",
+    )
     amount = fields.Float(
         track_visibility="onchange",
     )
