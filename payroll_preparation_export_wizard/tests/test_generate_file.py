@@ -2,7 +2,6 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 import base64
-import pytest
 from .common import PayrollPreparationExportCase
 from ..wizard.payroll_preparation_export import (
     DEFAULT_FILE_NAME,
