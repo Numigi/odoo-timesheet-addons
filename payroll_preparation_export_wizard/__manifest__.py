@@ -2,14 +2,14 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 {
-    'name': 'Payroll Preparation From Timesheet',
+    'name': 'Payroll Preparation Export Wizard',
     'version': '1.0.0',
     'author': 'Numigi',
     'maintainer': 'Numigi',
     'website': 'https://www.numigi.com',
     'license': 'LGPL-3',
     'category': 'Payroll',
-    'summary': 'Import payroll entries from timesheets',
+    'summary': 'Export payroll entries into a file',
     'depends': [
         'payroll_preparation',
     ],

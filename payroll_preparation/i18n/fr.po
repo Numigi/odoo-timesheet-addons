@@ -118,6 +118,11 @@ msgid "Grants write and configuration access to the payroll preparation applicat
 msgstr "Donne accès à l'application de préparation de paie en mode écriture et configuration"
 
 #. module: payroll_preparation
+#: model:ir.model.fields,field_description:payroll_preparation.field_payroll_preparation_line__amount
+msgid "Hourly Rate"
+msgstr "Taux Horaire"
+
+#. module: payroll_preparation
 #: model:ir.model.fields,field_description:payroll_preparation.field_payroll_preparation_line__id
 msgid "ID"
 msgstr "ID"

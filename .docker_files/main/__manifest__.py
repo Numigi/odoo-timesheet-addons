@@ -14,6 +14,7 @@
         'payroll_code_on_task_type',
         'payroll_period',
         'payroll_preparation',
+        'payroll_preparation_export_wizard',
         'payroll_preparation_from_timesheet',
         'timesheet_edit_only_today',
         'timesheet_edit_only_today_grid',

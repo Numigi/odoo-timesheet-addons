@@ -2,7 +2,7 @@
 <odoo noupdate="1">
 
     <record id="payroll_preparation_export_history_multi_company_rule" model="ir.rule">
-        <field name="name">Payroll Entry Multi-Company Rule</field>
+        <field name="name">Payroll Preparation Export History Multi-Company Rule</field>
         <field name="model_id" ref="model_payroll_preparation_export_history"/>
         <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'child_of', [user.company_id.id])]</field>
         <field name="global" eval="True"/>
