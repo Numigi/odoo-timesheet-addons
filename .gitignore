@@ -1,2 +1,10 @@
-.log
+venv
+extra-addons
+log
 /.idea
+__pycache__/
+*.pyc
+.venv
+Pipfile
+.DS_Store
+*node_modules
