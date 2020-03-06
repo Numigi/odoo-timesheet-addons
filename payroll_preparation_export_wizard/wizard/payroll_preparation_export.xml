@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="payroll_preparation_export_form" model="ir.ui.view">
+        <field name="name">Payroll Preparation Export Wizard</field>
+        <field name="model">payroll.preparation.export</field>
+        <field name="arch" type="xml">
+            <form string="Generate the file">
+                <sheet>
+                    <group>
+                        <group name="group_1">
+                            <field name="period_id"
+                                attrs="{'readonly': [('file', '!=', False)]}"
+                                />
+                            <field name="file" filename="filename" readonly="1"
+                                attrs="{'invisible': [('file', '=', False)]}"
+                                />
+                            <field name="filename" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="OK" class="btn btn-primary" type="object" name="action_validate"
+                        attrs="{'invisible': [('file', '!=', False)]}"
+                        />
+                    <button string="Cancel" class="btn btn-secondary" special="cancel"
+                        attrs="{'invisible': [('file', '!=', False)]}"
+                        />
+                    <button string="Close" class="btn btn-primary" special="cancel"
+                        attrs="{'invisible': [('file', '=', False)]}"
+                        />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="generate_file_action" model="ir.actions.act_window">
+        <field name="name">Export Payroll Preparation Entries</field>
+        <field name="res_model">payroll.preparation.export</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>
