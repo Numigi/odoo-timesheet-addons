@@ -4,7 +4,6 @@
 import pytz
 from datetime import datetime, time
 from odoo import _, api, fields, models
-from odoo.exceptions import UserError
 
 
 class AccountAnalyticLine(models.Model):
