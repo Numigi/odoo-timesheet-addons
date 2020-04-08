@@ -3,7 +3,7 @@
 
 from ddt import ddt, data
 from odoo.tests import common
-from datetime import timedelta, date, datetime
+from datetime import date, datetime
 
 
 @ddt
