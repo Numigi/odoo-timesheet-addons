@@ -33,7 +33,7 @@ class AccountAnalyticLine(models.Model):
     def _get_datetime_from_date(self):
         naive_timestamp = datetime.combine(self.date, time.min)
 
-        tz_name = self._context.get('tz') or self.env.user.tz or pytz.utc
+        tz_name = self._context.get('tz') or self.env.user.tz or 'UTC'
         tz = pytz.timezone(tz_name)
         tz_timestamp = tz.localize(naive_timestamp)
 

@@ -11,6 +11,7 @@ class TestAccountAnalyticLine(common.SavepointCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        cls.env.user.tz = False
         cls.analytic_account = cls.env["account.analytic.account"].create(
             {"name": "A1",}
         )
@@ -36,6 +37,17 @@ class TestAccountAnalyticLine(common.SavepointCase):
         line = self._create_analytic_line_with_datetime(datetime.now())
         line.with_context(tz="EST").date = date_
         self.assertEqual(line.date_time, datetime(2016, 3, 24, 5))
+
+    def test_if_no_timezone_given__use_user_tz(self):
+        date_ = date(2016, 3, 24)
+        self.env.user.tz = "EST"
+        line = self._create_analytic_line_with_date(date_, tz=False)
+        self.assertEqual(line.date_time, datetime(2016, 3, 24, 5))
+
+    def test_if_no_timezone_given__and_user_has_no_tz__use_utc(self):
+        date_ = date(2016, 3, 24)
+        line = self._create_analytic_line_with_date(date_, tz=False)
+        self.assertEqual(line.date_time, datetime(2016, 3, 24, 0))
 
     def _create_analytic_line_with_datetime(self, datetime_, tz=None):
         return (
