@@ -27,10 +27,10 @@ class PayrollPreparationCase(SavepointCase):
         })
 
     @classmethod
-    def _create_payroll_preperation_line(cls, period=None, date=None):
+    def _create_payroll_preperation_line(cls, period=None, date=None, company=None):
         return cls.env['payroll.preparation.line'].create({
             'period_id': (period or cls.period).id,
             'date': date if date else None,
-            'company_id': (period or cls.company).id,
+            'company_id': (company or cls.company).id,
             'employee_id': cls.employee.id,
         })
