@@ -3,32 +3,13 @@
 
 import pytest
 from ddt import ddt, data, unpack
-from datetime import datetime, timedelta
+from datetime import timedelta
 from odoo.exceptions import ValidationError
-from odoo.tests.common import SavepointCase
+from .common import PayrollPreparationCase
 
 
 @ddt
-class TestPeriodConstraints(SavepointCase):
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        cls.company = cls.env['res.company'].create({'name': 'Company A'})
-
-        cls.today = datetime.now().date()
-        cls.period = cls._create_period(cls.today, cls.today + timedelta(13))
-        cls.employee = cls.env['hr.employee'].create({
-            'name': 'John Doe',
-        })
-
-    @classmethod
-    def _create_period(cls, date_from, date_to, company=None):
-        return cls.env['payroll.period'].create({
-            'date_from': date_from,
-            'date_to': date_to,
-            'company_id': cls.company.id if company is None else company.id,
-        })
+class TestPayrollPreparationLines(PayrollPreparationCase):
 
     @data(0, 1, 12, 13)
     def test_date_with_matching_period(self, delta):
@@ -44,14 +25,6 @@ class TestPeriodConstraints(SavepointCase):
     def test_if_no_date__week_not_computed(self):
         line = self._create_payroll_preperation_line(period=self.period, date=None)
         assert not line.week_number
-
-    def _create_payroll_preperation_line(self, period, date):
-        return self.env['payroll.preparation.line'].create({
-            'period_id': period.id,
-            'date': date,
-            'company_id': period.company_id.id,
-            'employee_id': self.employee.id,
-        })
 
     @data(
         (0, 1),
