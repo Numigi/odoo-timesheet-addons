@@ -1,4 +1,4 @@
-FROM quay.io/numigi/odoo-public:12.0
+FROM quay.io/numigi/odoo-public:12.latest
 MAINTAINER numigi <contact@numigi.com>
 
 USER root
@@ -20,6 +20,7 @@ COPY payroll_period /mnt/extra-addons/payroll_period
 COPY payroll_preparation /mnt/extra-addons/payroll_preparation
 COPY payroll_preparation_export_wizard /mnt/extra-addons/payroll_preparation_export_wizard
 COPY payroll_preparation_from_timesheet /mnt/extra-addons/payroll_preparation_from_timesheet
+COPY payroll_preparation_prorata /mnt/extra-addons/payroll_preparation_prorata
 COPY project_timesheet_time_control_enhanced /mnt/extra-addons/project_timesheet_time_control_enhanced
 COPY timesheet_edit_only_today /mnt/extra-addons/timesheet_edit_only_today
 COPY timesheet_edit_only_today_grid /mnt/extra-addons/timesheet_edit_only_today_grid

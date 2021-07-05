@@ -9,8 +9,6 @@ services:
     volumes:
       - odoo-web-data:/var/lib/odoo
       - ./.log:/var/log/odoo
-      - ./payroll_preparation_from_timesheet:/mnt/extra-addons/payroll_preparation_from_timesheet
-      - ../web-addons/web_custom_modifier:/mnt/extra-addons/web_custom_modifier
     ports:
       - "8069:8069"
       - "8071:8071"

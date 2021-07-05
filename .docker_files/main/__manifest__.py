@@ -16,6 +16,7 @@
         'payroll_preparation',
         'payroll_preparation_export_wizard',
         'payroll_preparation_from_timesheet',
+        'payroll_preparation_prorata',
         'project_timesheet_time_control_enhanced',
         'timesheet_edit_only_today',
         'timesheet_edit_only_today_grid',

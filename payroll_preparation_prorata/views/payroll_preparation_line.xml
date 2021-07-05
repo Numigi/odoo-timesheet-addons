@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="payroll_preparation_line_form" model="ir.ui.view">
+        <field name="name">Payroll Entry Form: add prorata</field>
+        <field name="model">payroll.preparation.line</field>
+        <field name="inherit_id" ref="payroll_preparation.payroll_preparation_line_form"/>
+        <field name="arch" type="xml">
+            <field name="amount" position="after">
+                <field name="prorata" widget="percentage"/>
+                <field name="prorata_amount" sum="Prorata Amount"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="payroll_preparation_line_list" model="ir.ui.view">
+        <field name="name">Payroll Entry List: add prorata</field>
+        <field name="model">payroll.preparation.line</field>
+        <field name="inherit_id" ref="payroll_preparation.payroll_preparation_line_list"/>
+        <field name="arch" type="xml">
+            <field name="amount" position="after">
+                <field name="prorata" widget="percentage"/>
+                <field name="prorata_amount" sum="Prorata Amount"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

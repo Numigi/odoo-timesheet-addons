@@ -3,6 +3,7 @@ extra-addons
 log
 /.idea
 __pycache__/
+.pytest_cache
 *.pyc
 .venv
 Pipfile
