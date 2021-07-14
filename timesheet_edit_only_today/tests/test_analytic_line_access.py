@@ -2,6 +2,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 import pytest
+from freezegun import freeze_time
 from datetime import datetime, timedelta
 from odoo.exceptions import AccessError
 from odoo.tests import common
@@ -16,6 +17,7 @@ class TestAnalyticLineAccess(common.SavepointCase):
 
         cls.user = cls.env.ref('base.user_demo')
         cls.user.groups_id -= cls.manager_group
+        cls.user.tz = "UTC"
 
         cls.project = cls.env['project.project'].create({
             'name': 'Project 2',
@@ -33,7 +35,8 @@ class TestAnalyticLineAccess(common.SavepointCase):
             'user_id': cls.user.id,
         })
 
-        cls.today = datetime.now().date()
+        cls.now = datetime(2020, 1, 1)
+        cls.today = cls.now.date()
         cls.yesterday = cls.today - timedelta(1)
         cls.tomorrow = cls.today + timedelta(1)
 
@@ -42,22 +45,30 @@ class TestAnalyticLineAccess(common.SavepointCase):
 
     def test_if_yesterday__raise_error(self):
         self.line.date = self.yesterday
-        with pytest.raises(AccessError):
+        with pytest.raises(AccessError), freeze_time(self.now):
             self.check_access()
 
     def test_if_tomorrow__raise_error(self):
         self.line.date = self.tomorrow
-        with pytest.raises(AccessError):
+        with pytest.raises(AccessError), freeze_time(self.now):
             self.check_access()
 
     def test_if_today__error_not_raised(self):
         self.line.date = self.today
-        self.check_access()
+        with freeze_time(self.now):
+            self.check_access()
 
     def test_if_timesheet_manager__error_not_raised(self):
         self.user.groups_id |= self.manager_group
         self.line.date = self.yesterday
-        self.check_access()
+        with freeze_time(self.now):
+            self.check_access()
+
+    def test_today_in_canada_est(self):
+        self.user.tz = "EST"
+        self.line.date = self.yesterday
+        with freeze_time(self.now):
+            self.check_access()
 
 
 class TestCreateAccess(TestAnalyticLineAccess):

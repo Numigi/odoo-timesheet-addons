@@ -1,8 +1,7 @@
 # © 2020 - today Numigi (tm) and all its contributors (https://bit.ly/numigiens)
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from datetime import datetime
-from odoo import models, _
+from odoo import fields, models, _
 from odoo.exceptions import AccessError
 
 PAST_FUTURE_DATE_ERROR_MESSAGE = _(
@@ -38,7 +37,7 @@ class TimesheetEntry(models.Model):
             self.check_is_not_past_or_future_date(line.date)
 
     def check_is_not_past_or_future_date(self, date):
-        today = datetime.now().date()
+        today = fields.Date.context_today(self)
         is_past_or_future_date = date != today
         if is_past_or_future_date:
             raise AccessError(PAST_FUTURE_DATE_ERROR_MESSAGE)
