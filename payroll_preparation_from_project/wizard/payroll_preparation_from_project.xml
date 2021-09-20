@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="payroll_preparation_from_project_form" model="ir.ui.view">
+        <field name="name">Generate Payroll Entries From Project Wizard</field>
+        <field name="model">payroll.preparation.from.project</field>
+        <field name="arch" type="xml">
+            <form string="Generate Payroll Entries">
+                <sheet>
+                    <group>
+                        <group name="group_1">
+                            <field name="project_id" readonly="1" force_save="1"/>
+                            <field name="period_id"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Validate" class="btn btn-primary" type="object" name="action_validate"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="payroll_preparation_from_project_action" model="ir.actions.act_window">
+        <field name="name">Generate Payroll Entries</field>
+        <field name="res_model">payroll.preparation.from.timesheet</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>
