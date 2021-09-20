@@ -8,4 +8,17 @@ from .common import PayrollPreparationCase
 
 
 class TestWizard(PayrollPreparationCase):
-    pass
+    def test_open_wizard(self):
+        action = self.project.open_payroll_preparation_wizard()
+        assert action["res_model"] == "payroll.preparation.from.project"
+        assert action["context"]["default_project_id"] == self.project.id
+
+    def test_wizard_validate(self):
+        wizard = self.env["payroll.preparation.from.project"].create(
+            {
+                "project_id": self.project.id,
+            }
+        )
+        action = wizard.action_validate()
+        assert action["res_model"] == "payroll.preparation.line"
+        assert action["context"]["search_default_project_id"] == self.project.id

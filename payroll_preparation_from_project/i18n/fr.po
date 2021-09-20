@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-21 13:45+0000\n"
-"PO-Revision-Date: 2020-01-21 08:46-0500\n"
+"POT-Creation-Date: 2021-09-20 20:01+0000\n"
+"PO-Revision-Date: 2021-09-20 16:02-0400\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -15,12 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
-"X-Generator: Poedit 2.0.6\n"
-
-#. module: payroll_preparation_from_project
-#: model:ir.model,name:payroll_preparation_from_project.model_account_analytic_line
-msgid "Analytic Line"
-msgstr ""
+"X-Generator: Poedit 2.3\n"
 
 #. module: payroll_preparation_from_project
 #: model_terms:ir.ui.view,arch_db:payroll_preparation_from_project.payroll_preparation_from_project_form
@@ -43,11 +38,7 @@ msgid "Display Name"
 msgstr "Nom affiché"
 
 #. module: payroll_preparation_from_project
-#: model:ir.ui.menu,name:payroll_preparation_from_project.menu_payroll_period
-msgid "Generate Entries"
-msgstr "Générer les entrées"
-
-#. module: payroll_preparation_from_project
+#: model:ir.actions.act_window,name:payroll_preparation_from_project.action_open_wizard
 #: model:ir.actions.act_window,name:payroll_preparation_from_project.payroll_preparation_from_project_action
 #: model_terms:ir.ui.view,arch_db:payroll_preparation_from_project.payroll_preparation_from_project_form
 msgid "Generate Payroll Entries"
@@ -55,8 +46,8 @@ msgstr "Générer les entrées de paie"
 
 #. module: payroll_preparation_from_project
 #: model:ir.model,name:payroll_preparation_from_project.model_payroll_preparation_from_project
-msgid "Generate Payroll Entries From project"
-msgstr "Générer entrées de paie depuis feuilles de temps"
+msgid "Generate Payroll Entries From Project"
+msgstr "Générer entrées de paie depuis un projet"
 
 #. module: payroll_preparation_from_project
 #: model:ir.model.fields,field_description:payroll_preparation_from_project.field_payroll_preparation_from_project__id
@@ -79,12 +70,9 @@ msgid "Last Updated on"
 msgstr "Dernière mise à jour le"
 
 #. module: payroll_preparation_from_project
-#: model_terms:ir.ui.view,arch_db:payroll_preparation_from_project.payroll_preparation_from_project_form
-msgid "OK"
-msgstr "OK"
-
-#. module: payroll_preparation_from_project
-#: model:ir.model.fields,field_description:payroll_preparation_from_project.field_account_analytic_line__payroll_preparation_line_ids
+#: code:addons/payroll_preparation_from_project/models/project.py:21
+#: model_terms:ir.ui.view,arch_db:payroll_preparation_from_project.view_project_form
+#, python-format
 msgid "Payroll Entries"
 msgstr "Entrées de paie"
 
@@ -99,21 +87,25 @@ msgid "Period"
 msgstr "Période"
 
 #. module: payroll_preparation_from_project
-#: code:addons/payroll_preparation_from_project/models/account_analytic_line.py:22
-#, python-format
-msgid ""
-"You may not delete the project line {} because it is linked to a payroll "
-"entry."
-msgstr ""
-"Vous ne pouvez pas supprimer la ligne de temps {} car elle est liée à une "
-"entrée de paie."
+#: model:ir.model,name:payroll_preparation_from_project.model_project_project
+#: model:ir.model.fields,field_description:payroll_preparation_from_project.field_payroll_preparation_from_project__project_id
+#: model:ir.model.fields,field_description:payroll_preparation_from_project.field_payroll_preparation_line__project_id
+msgid "Project"
+msgstr "Projet"
 
 #. module: payroll_preparation_from_project
-#: code:addons/payroll_preparation_from_project/models/account_analytic_line.py:40
-#, python-format
-msgid ""
-"You may not modify the project line {} because it is linked to a payroll "
-"entry."
-msgstr ""
-"Vous ne pouvez pas modifier la ligne de temps {} car elle est liée à une "
-"entrée de paie."
+#: model_terms:ir.ui.view,arch_db:payroll_preparation_from_project.payroll_preparation_from_project_form
+msgid "Validate"
+msgstr "Valider"
+
+#~ msgid "Generate Entries"
+#~ msgstr "Générer les entrées"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "You may not delete the project line {} because it is linked to a payroll entry."
+#~ msgstr "Vous ne pouvez pas supprimer la ligne de temps {} car elle est liée à une entrée de paie."
+
+#~ msgid "You may not modify the project line {} because it is linked to a payroll entry."
+#~ msgstr "Vous ne pouvez pas modifier la ligne de temps {} car elle est liée à une entrée de paie."

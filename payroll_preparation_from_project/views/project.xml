@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_project_form" model="ir.ui.view">
+        <field name="name">Project Form: add Payroll Entries smart button</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <button name="toggle_active" position="before">
+                <button
+                    name="view_payroll_entries"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-usd"
+                    string="Payroll Entries"
+                    groups="payroll_preparation.group_user"
+                    >
+                </button>
+            </button>
+        </field>
+    </record>
+
+    <act_window
+        id="action_open_wizard"
+        name="Generate Payroll Entries"
+        res_model="payroll.preparation.from.project"
+        src_model="project.project"
+        view_mode="form"
+        target="new"
+        context="{'default_project_id': active_id}"
+        />
+
+</odoo>

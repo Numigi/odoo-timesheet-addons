@@ -14,4 +14,8 @@ class PayrollPreparationFromProject(models.TransientModel):
     period_id = fields.Many2one('payroll.period')
 
     def action_validate(self):
+        self._generate_payroll_entries()
+        return self.project_id.view_payroll_entries()
+
+    def _generate_payroll_entries(self):
         pass

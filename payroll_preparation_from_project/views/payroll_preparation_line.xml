@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_payroll_preparation_line_form" model="ir.ui.view">
+        <field name="name">Payroll Entry Form: add project</field>
+        <field name="model">payroll.preparation.line</field>
+        <field name="inherit_id" ref="payroll_preparation.payroll_preparation_line_form"/>
+        <field name="arch" type="xml">
+            <field name="analytic_account_id" position="before">
+                <field name="project_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_payroll_preparation_line_list" model="ir.ui.view">
+        <field name="name">Payroll Entry List: add project</field>
+        <field name="model">payroll.preparation.line</field>
+        <field name="inherit_id" ref="payroll_preparation.payroll_preparation_line_list"/>
+        <field name="arch" type="xml">
+            <field name="analytic_account_id" position="before">
+                <field name="project_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_payroll_preparation_line_search" model="ir.ui.view">
+        <field name="name">Payroll Entry Search: add project</field>
+        <field name="model">payroll.preparation.line</field>
+        <field name="inherit_id" ref="payroll_preparation.payroll_preparation_line_search"/>
+        <field name="arch" type="xml">
+            <field name="analytic_account_id" position="after">
+                <field name="project_id"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
