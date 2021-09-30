@@ -1,43 +1,92 @@
-Payroll Preparation From Project
-================================
+Payroll Preparation To Payslip
+==============================
 
 .. contents:: Table of Contents
 
 Overview
 --------
-This module allows to generate payroll entries from a project.
+This module allows to generate payslips from payroll preparation entries.
 
-When only this module is installed, no payroll entries are generated.
+Configuration
+-------------
 
-However, another module can implement how the preparation lines are created for a given project.
+Salary Rules
+~~~~~~~~~~~~
+I open the form view of a salary rule.
+
+I the python computation and condition fields, I can reference payroll entries.
+
+.. image:: static/description/salary_rule_form.png
+
+The ``entries`` object works the same way as ``worked_days`` or ``inputs``.
+
+Accessing an attribute of this object returns the sum of payroll entries with a code matching
+the attribute name.
+
+In the example above, the expression returns the sum of payroll entries with the code ``AAA``.
 
 Usage
 -----
-In the form view of a project, a new action button is added.
 
-.. image:: static/description/project_action_menu.png
+Generate The Payslip
+~~~~~~~~~~~~~~~~~~~~
+As member of the groups ``Payroll Preparation / User`` and ``Payroll / Manager``, I go to the
+list view of payroll entries.
 
-When clicking on this button, a wizard is open.
+.. image:: static/description/payroll_entry_list.png
+
+I select a set of entries and I click on ``Generate Payslips``.
+
+.. image:: static/description/generate_payslips_action.png
+
+A confirmation wizard is opened.
 
 .. image:: static/description/wizard.png
 
-The wizard allows to select a payroll period.
+When confirming, the payslips are created.
 
-.. image:: static/description/wizard_filled.png
+.. image:: static/description/payslip_list.png
 
-After clicking on ``Validate``, payroll entries are created for this project.
+..
 
-.. image:: static/description/payroll_entry_list.png
+    By default, a single payslip is created per employee.
 
-Project Smart Button
---------------------
-The module also adds a smart button in the form view of a project.
+    The date range used as period for a payslip is based on the
+    min and max dates of the related payroll entries.
 
-.. image:: static/description/project_smart_button.png
+I open a payslip.
 
-When I click on the button, I see the list payroll entries generated from this project.
+I notice a new table ``Payroll Entries``, containing the list entries related to this payslip.
 
-.. image:: static/description/payroll_entry_list.png
+.. image:: static/description/payslip_form.png
+
+Payslip Computation
+~~~~~~~~~~~~~~~~~~~
+I click on ``Compute``.
+
+.. image:: static/description/payslip_compute_button.png
+
+I notice that my customized rule was computed based on the payroll entries.
+
+.. image:: static/description/payslip_payroll_entries.png
+
+.. image:: static/description/payslip_lines.png
+
+Smart Button
+~~~~~~~~~~~~
+I notice a new smart button on the payslip.
+
+.. image:: static/description/payslip_smart_button.png
+
+When clicking on the button, the list of related payroll entries is displayed.
+
+.. image:: static/description/payroll_entry_list_from_smart_button.png
+
+Deleting Payroll Entries
+~~~~~~~~~~~~~~~~~~~~~~~~
+The module prevents deleting a payroll entry linked to a payslip.
+
+When doing so, a blocking message is displayed.
 
 Contributors
 ------------

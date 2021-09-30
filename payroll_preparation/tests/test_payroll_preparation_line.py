@@ -38,3 +38,15 @@ class TestPayrollPreparationLines(PayrollPreparationCase):
         date = self.today + timedelta(delta)
         line = self._create_payroll_preperation_line(period=self.period, date=date)
         assert line.week_number == week_number
+
+    def test_display_name(self):
+        date = self.today
+        code = "AAA"
+        line = self._create_payroll_preperation_line(date=date, code=code)
+        expected_name = f"{date} - {self.employee.display_name} - AAA"
+        assert line.display_name == expected_name
+
+    def test_display_name__no_code_no_date(self):
+        line = self._create_payroll_preperation_line()
+        expected_name = self.employee.display_name
+        assert line.display_name == expected_name

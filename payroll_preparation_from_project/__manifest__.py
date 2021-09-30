@@ -12,10 +12,11 @@
     "summary": "Generate payroll entries from projects",
     "depends": [
         "payroll_preparation",
-        "project",
+        "hr_timesheet",
     ],
     "data": [
         "wizard/payroll_preparation_from_project.xml",
+        "wizard/payroll_preparation_project_cancel.xml",
         "views/project.xml",
         "views/payroll_preparation_line.xml",
     ],

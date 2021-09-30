@@ -12,11 +12,11 @@
     "summary": "Generate payroll entries from projects",
     "depends": [
         "payroll_preparation",
-        "project",
+        "hr_payroll",
     ],
     "data": [
-        "wizard/payroll_preparation_from_project.xml",
-        "views/project.xml",
+        "wizard/payroll_preparation_to_payslip.xml",
+        "views/hr_payslip.xml",
         "views/payroll_preparation_line.xml",
     ],
     "installable": True,

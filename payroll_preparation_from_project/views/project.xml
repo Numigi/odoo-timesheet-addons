@@ -12,9 +12,10 @@
                     type="object"
                     class="oe_stat_button"
                     icon="fa-usd"
-                    string="Payroll Entries"
                     groups="payroll_preparation.group_user"
+                    attrs="{'invisible': [('payroll_entry_count', '=', 0)]}"
                     >
+                    <field name="payroll_entry_count" widget="statinfo" string="Payroll Entries"/>
                 </button>
             </button>
         </field>
@@ -24,6 +25,17 @@
         id="action_open_wizard"
         name="Generate Payroll Entries"
         res_model="payroll.preparation.from.project"
+        src_model="project.project"
+        view_mode="form"
+        target="new"
+        context="{'default_project_id': active_id}"
+        />
+
+
+    <act_window
+        id="action_cancel_payroll_entries_wizard"
+        name="Cancel Payroll Entries"
+        res_model="payroll.preparation.project.cancel"
         src_model="project.project"
         view_mode="form"
         target="new"

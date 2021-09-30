@@ -5,57 +5,57 @@ from datetime import datetime, timedelta
 from odoo.tests.common import SavepointCase
 
 
-class PayrollPreparationCase(SavepointCase):
-
+class PayrollPreparationToPayslipCase(SavepointCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.company = cls.env['res.company'].create({'name': 'Company A'})
+        cls.company = cls.env["res.company"].create({"name": "Company A"})
 
-        cls.payroll_manager = cls.env['res.users'].create({
-            'name': 'payroll@manager.com',
-            'login': 'payroll@manager.com',
-            'email': 'payroll@manager.com',
-            'groups_id': [(4, cls.env.ref('payroll_preparation.group_manager').id)],
-            'company_id': cls.company.id,
-            'company_ids': [(4, cls.company.id)],
-        })
-        cls.user = cls.env['res.users'].create({
-            'name': 'Test User',
-            'login': 'test@test.com',
-            'email': 'test@test.com',
-        })
+        cls.payroll_manager = cls.env["res.users"].create(
+            {
+                "name": "payroll@manager.com",
+                "login": "payroll@manager.com",
+                "email": "payroll@manager.com",
+                "groups_id": [
+                    (4, cls.env.ref("payroll_preparation.group_manager").id),
+                    (4, cls.env.ref("hr_payroll.group_hr_payroll_manager").id),
+                ],
+                "company_id": cls.company.id,
+                "company_ids": [(4, cls.company.id)],
+            }
+        )
 
-        cls.employee = cls.env['hr.employee'].create({
-            'name': 'John Doe',
-            'user_id': cls.user.id,
-            'company_id': cls.company.id,
-        })
+        cls.employee = cls.env["hr.employee"].create(
+            {
+                "name": "John Doe",
+                "company_id": cls.company.id,
+            }
+        )
 
-        cls.project = cls.env['project.project'].create({
-            'name': 'My Project',
-            'company_id': cls.company.id,
-        })
+        cls.date_start = datetime.now().date()
+        cls.date_end = cls.date_start + timedelta(30)
 
-        cls.today = datetime.now().date()
-        cls.period = cls.create_period(cls.today, cls.today + timedelta(13))
+        cls.entry_1 = cls._create_entry(cls.date_start)
+        cls.entry_2 = cls._create_entry(cls.date_end)
 
-    @classmethod
-    def create_period(cls, date_from, date_to, company=None):
-        return cls.env['payroll.period'].create({
-            'date_from': date_from,
-            'date_to': date_to,
-            'company_id': cls.company.id if company is None else company.id,
-        })
-
-    @classmethod
-    def generate_payroll_entries(cls, period):
-        wizard_model = cls.env['payroll.preparation.from.timesheet'].sudo(cls.payroll_manager)
-        wizard = wizard_model.create({'period_id': period.id})
-        wizard.action_validate()
+        cls.structure = cls.env.ref("hr_payroll.structure_base")
+        cls.contract = cls.env["hr.contract"].create(
+            {
+                "name": "Test",
+                "employee_id": cls.employee.id,
+                "date_start": cls.date_start,
+                "wage": 50000,
+                "state": "open",
+                "struct_id": cls.structure.id,
+            }
+        )
 
     @classmethod
-    def find_payroll_entries(cls, period):
-        return cls.env['payroll.preparation.line'].search([
-            ('period_id', '=', period.id),
-        ])
+    def _create_entry(cls, date_):
+        return cls.env["payroll.preparation.line"].create(
+            {
+                "date": date_,
+                "employee_id": cls.employee.id,
+                "company_id": cls.company.id,
+            }
+        )

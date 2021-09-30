@@ -8,6 +8,9 @@
             <form string="Generate Payslips">
                 <sheet>
                     <field name="entry_ids" invisible="1"/>
+                    <div>
+                        After clicking on Validate, one payslip will be created for each employee.
+                    </div>
                 </sheet>
                 <footer>
                     <button string="Validate" class="btn btn-primary" type="object" name="action_validate"/>
@@ -17,7 +20,7 @@
         </field>
     </record>
 
-    <record id="payroll_preparation_to_payslip_action" model="ir.actions.act_window">
+    <record id="payslip_wizard_action" model="ir.actions.act_window">
         <field name="name">Generate Payslips</field>
         <field name="res_model">payroll.preparation.to.payslip</field>
         <field name="view_type">form</field>
