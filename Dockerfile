@@ -22,6 +22,7 @@ COPY payroll_preparation_export_wizard /mnt/extra-addons/payroll_preparation_exp
 COPY payroll_preparation_from_project /mnt/extra-addons/payroll_preparation_from_project
 COPY payroll_preparation_from_timesheet /mnt/extra-addons/payroll_preparation_from_timesheet
 COPY payroll_preparation_prorata /mnt/extra-addons/payroll_preparation_prorata
+COPY payroll_preparation_to_payslip /mnt/extra-addons/payroll_preparation_to_payslip
 COPY project_timesheet_time_control_enhanced /mnt/extra-addons/project_timesheet_time_control_enhanced
 COPY timesheet_edit_only_today /mnt/extra-addons/timesheet_edit_only_today
 COPY timesheet_edit_only_today_grid /mnt/extra-addons/timesheet_edit_only_today_grid
