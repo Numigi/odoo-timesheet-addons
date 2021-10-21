@@ -11,6 +11,7 @@ class Project(models.Model):
     payroll_entry_ids = fields.One2many(
         "payroll.preparation.line",
         "project_id",
+        "Payroll Preparation Entries",
     )
 
     payroll_entry_count = fields.Integer(
