@@ -18,6 +18,7 @@
         'payroll_preparation_from_project',
         'payroll_preparation_from_timesheet',
         'payroll_preparation_prorata',
+        'payroll_preparation_to_payslip',
         'project_timesheet_time_control_enhanced',
         'timesheet_edit_only_today',
         'timesheet_edit_only_today_grid',

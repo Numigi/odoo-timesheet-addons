@@ -37,7 +37,7 @@ class PayrollPreparationToPayslip(models.TransientModel):
             if not entry.date:
                 raise ValidationError(
                     _(
-                        "In order to generate the payslips, "errors
+                        "In order to generate the payslips, "
                         "all selected payroll entries must have a date.\n"
                         "The entry {} has no date."
                     ).format(entry.display_name)
