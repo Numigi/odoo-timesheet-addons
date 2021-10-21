@@ -1,23 +1,22 @@
-# © 2020 - today Numigi (tm) and all its contributors (https://bit.ly/numigiens)
+# © 2021 - today Numigi (tm) and all its contributors (https://bit.ly/numigiens)
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 {
-    "name": "Payroll Preparation From Project",
+    "name": "Payroll Preparation To Payslip",
     "version": "1.0.0",
     "author": "Numigi",
     "maintainer": "Numigi",
     "website": "https://www.numigi.com",
     "license": "LGPL-3",
     "category": "Payroll",
-    "summary": "Generate payroll entries from projects",
+    "summary": "Convert payroll entries into payslips",
     "depends": [
         "payroll_preparation",
-        "hr_timesheet",
+        "hr_payroll",
     ],
     "data": [
-        "wizard/payroll_preparation_from_project.xml",
-        "wizard/payroll_preparation_project_cancel.xml",
-        "views/project.xml",
+        "wizard/payroll_preparation_to_payslip.xml",
+        "views/hr_payslip.xml",
         "views/payroll_preparation_line.xml",
     ],
     "installable": True,

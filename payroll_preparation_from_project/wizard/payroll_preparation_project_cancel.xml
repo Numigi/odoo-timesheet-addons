@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="payroll_preparation_project_cancel_form" model="ir.ui.view">
+        <field name="name">Cancel Payroll Entries From Project Wizard</field>
+        <field name="model">payroll.preparation.project.cancel</field>
+        <field name="arch" type="xml">
+            <form string="Cancel Payroll Entries">
+                <sheet>
+                    <field name="project_ids" invisible="1"/>
+                    <div>
+                        After clicking on Validate, all payroll entries linked to this project will be deleted.
+                    </div>
+                </sheet>
+                <footer>
+                    <button string="Validate" class="btn btn-primary" type="object" name="action_validate"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="payroll_preparation_project_cancel_action" model="ir.actions.act_window">
+        <field name="name">Cancel Payroll Entries</field>
+        <field name="res_model">payroll.preparation.project.cancel</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

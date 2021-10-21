@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="action_view_payroll_entries" model="ir.actions.act_window">
+        <field name="name">Payroll Entries</field>
+        <field name="res_model">payroll.preparation.line</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_payslip_id': active_id}</field>
+    </record>
+
+    <record id="view_hr_payslip_form" model="ir.ui.view">
+        <field name="name">Payslip Form: add payroll entries list</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button
+                    name="%(action_view_payroll_entries)d"
+                    type="action"
+                    class="oe_stat_button"
+                    icon="fa-tasks"
+                    string="Payroll Entries"
+                    groups="payroll_preparation.group_user"
+                    >
+                </button>
+            </div>
+            <field name="input_line_ids" position="after">
+                <separator string="Payroll Entries"/>
+                <field name="payroll_entry_ids" colspan="4" nolabel="1">
+                    <tree>
+                        <field name="date"/>
+                        <field name="analytic_account_id"/>
+                        <field name="code"/>
+                        <field name="duration"/>
+                        <field name="hourly_rate"/>
+                        <field name="amount"/>
+                    </tree>
+                </field>
+            </field>
+        </field>
+    </record>
+
+</odoo>
