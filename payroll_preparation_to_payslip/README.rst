@@ -60,15 +60,7 @@ I notice a new table ``Payroll Entries``, containing the list entries related to
 
 .. image:: static/description/payslip_form.png
 
-Payslip Computation
-~~~~~~~~~~~~~~~~~~~
-I click on ``Compute``.
-
-.. image:: static/description/payslip_compute_button.png
-
 I notice that my customized rule was computed based on the payroll entries.
-
-.. image:: static/description/payslip_payroll_entries.png
 
 .. image:: static/description/payslip_lines.png
 

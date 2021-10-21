@@ -8,7 +8,6 @@ from .common import PayrollPreparationToPayslipCase
 
 
 class TestWizard(PayrollPreparationToPayslipCase):
-
     def _generate_payslips(self):
         active_ids = [self.entry_1.id, self.entry_2.id]
         wizard_model = (
@@ -28,6 +27,12 @@ class TestWizard(PayrollPreparationToPayslipCase):
 
     def test_two_different_employees(self):
         employee_2 = self.employee.copy()
+        self.contract.copy(
+            {
+                "employee_id": employee_2.id,
+                "state": "open",
+            }
+        )
         self.entry_2.employee_id = employee_2
         payslip = self._generate_payslips()
         assert len(payslip) == 2
@@ -37,6 +42,10 @@ class TestWizard(PayrollPreparationToPayslipCase):
         assert payslip.contract_id == self.contract
         assert payslip.struct_id == self.structure
 
+    def test_on_generate_payslip__lines_computed(self):
+        payslip = self._generate_payslips()
+        assert payslip.line_ids
+
     def test_entry_without_date(self):
         self.entry_1.date = False
         with pytest.raises(ValidationError):
@@ -44,5 +53,15 @@ class TestWizard(PayrollPreparationToPayslipCase):
 
     def test_generate_payslip_twice(self):
         self._generate_payslips()
+        with pytest.raises(ValidationError):
+            self._generate_payslips()
+
+    def test_employee_without_contract(self):
+        self.contract.state = "draft"
+        with pytest.raises(ValidationError):
+            self._generate_payslips()
+
+    def test_contract_without_structure(self):
+        self.contract.struct_id = False
         with pytest.raises(ValidationError):
             self._generate_payslips()

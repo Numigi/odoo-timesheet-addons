@@ -37,7 +37,7 @@ class PayrollPreparationToPayslip(models.TransientModel):
             if not entry.date:
                 raise ValidationError(
                     _(
-                        "In order to generate the payslips, "
+                        "In order to generate the payslips, "errors
                         "all selected payroll entries must have a date.\n"
                         "The entry {} has no date."
                     ).format(entry.display_name)
@@ -56,9 +56,32 @@ class PayrollPreparationToPayslip(models.TransientModel):
                 )
 
     def _generate_payslips(self):
+        payslips = self._create_payslips()
+        self._compute_payslips(payslips)
+
+    def _create_payslips(self):
+        payslips = self.env["hr.payslip"]
+
+        errors = []
+
         for entries in self._group_entries():
-            payslip = self._create_payslip(entries)
-            entries.write({"payslip_id": payslip.id})
+            try:
+                payslip = self._create_payslip(entries)
+            except ValidationError as err:
+                errors.append(err)
+            else:
+                entries.write({"payslip_id": payslip.id})
+                payslips |= payslip
+
+        if errors:
+            raise ValidationError(
+                "\n\n".join(err.name for err in errors)
+            )
+
+        return payslips
+
+    def _compute_payslips(self, payslips):
+        payslips.compute_sheet()
 
     def _group_entries(self):
         res = {}
@@ -80,6 +103,32 @@ class PayrollPreparationToPayslip(models.TransientModel):
         vals = self._get_payslip_vals(entries)
         payslip = self.env["hr.payslip"].create(vals)
         payslip.onchange_employee()
+
+        if not payslip.contract_id:
+            raise ValidationError(
+                _(
+                    "The payslip of {employee} could not be generated. "
+                    "The employee seems to have no active contract for "
+                    "the given period ({date_from} to {date_to})."
+                ).format(
+                    employee=payslip.employee_id.display_name,
+                    date_from=payslip.date_from,
+                    date_to=payslip.date_to,
+                )
+            )
+
+        if not payslip.struct_id:
+            raise ValidationError(
+                _(
+                    "The payslip of {employee} could not be generated. "
+                    "The employee's contract ({contract}) seems to have no "
+                    "payroll structure."
+                ).format(
+                    employee=payslip.employee_id.display_name,
+                    contract=payslip.contract_id.display_name,
+                )
+            )
+
         return payslip
 
     def _get_payslip_vals(self, entries):
