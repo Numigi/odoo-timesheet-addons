@@ -16,6 +16,7 @@ class Project(models.Model):
 
     payroll_entry_count = fields.Integer(
         compute="_compute_payroll_entry_count",
+        groups="payroll_preparation.group_user",
     )
 
     def _compute_payroll_entry_count(self):
