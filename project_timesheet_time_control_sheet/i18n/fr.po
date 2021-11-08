@@ -1,0 +1,37 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* project_timesheet_time_control_sheet
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-05 16:04+0000\n"
+"PO-Revision-Date: 2021-11-05 16:04+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_timesheet_time_control_sheet
+#: model:ir.model,name:project_timesheet_time_control_sheet.model_account_analytic_line
+msgid "Analytic Line"
+msgstr ""
+
+#. module: project_timesheet_time_control_sheet
+#: model:ir.model,name:project_timesheet_time_control_sheet.model_hr_timesheet_switch
+msgid "Helper to quickly switch between timesheet lines"
+msgstr ""
+
+#. module: project_timesheet_time_control_sheet
+#: code:addons/project_timesheet_time_control_sheet/models/hr_timesheet_sheet.py:17
+#, python-format
+msgid "The timesheet can not be submitted because the timesheet line {} has an open timer."
+msgstr "La feuille de temps ne peut pas être soumise, car la ligne de temps {} a un chronomètre ouvert."
+
+#. module: project_timesheet_time_control_sheet
+#: model:ir.model,name:project_timesheet_time_control_sheet.model_hr_timesheet_sheet
+msgid "Timesheet Sheet"
+msgstr ""
