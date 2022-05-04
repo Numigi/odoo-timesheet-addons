@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="timesheet_list" model="ir.ui.view">
+        <field name="name">Timesheet List: Add description autocomplete</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+        <field name="arch" type="xml">
+            <field name="name" position="attributes">
+                <attribute name="widget">timesheet_description_autocomplete</attribute>
+            </field>
+        </field>
+    </record>
+
+</odoo>

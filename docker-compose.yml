@@ -9,6 +9,7 @@ services:
     volumes:
       - odoo-web-data:/var/lib/odoo
       - ./.log:/var/log/odoo
+      - ./timesheet_description_template:/mnt/extra-addons/timesheet_description_template
     ports:
       - "8069:8069"
       - "8071:8071"

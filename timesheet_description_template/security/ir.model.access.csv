@@ -1,0 +1,3 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_timesheet_description_template_user,timesheet_description_template_user,model_timesheet_description_template,base.group_user,1,0,0,0
+access_timesheet_description_template_manager,timesheet_description_template_manager,model_timesheet_description_template,hr_timesheet.group_timesheet_manager,1,1,1,1
