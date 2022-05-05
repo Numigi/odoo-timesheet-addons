@@ -19,4 +19,4 @@ class HrTimesheetDescriptionTemplate(models.Model):
         return sorted(lines.mapped("name"))
 
     def _search_suggestions(self, term):
-        return self.search([("name", "ilike", f"%{term}%")])
+        return self.search([("name", "ilike", f"%{term}%")], limit=20)
