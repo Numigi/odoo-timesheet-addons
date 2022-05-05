@@ -34,7 +34,7 @@ Using the Widget
 ----------------
 The autocomplete widget (``timesheet_description_autocomplete``) is added by default on the most common views of timesheets.
 
-It can be added other views (even other models than timesheets).
+It can be added in other views (even other models than timesheets).
 The only requirement is that the field must be a ``Char`` field.
 
 Contributors

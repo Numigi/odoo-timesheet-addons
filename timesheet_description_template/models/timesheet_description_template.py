@@ -8,8 +8,9 @@ class HrTimesheetDescriptionTemplate(models.Model):
 
     _name = "timesheet.description.template"
     _description = "Timesheet Description Template"
+    _order = "name"
 
-    name = fields.Char(required=True)
+    name = fields.Char(required=True, string="Description")
     active = fields.Boolean(default=True)
 
     @api.model

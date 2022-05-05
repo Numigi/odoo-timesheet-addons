@@ -5,7 +5,7 @@
         <field name="name">Timesheet Description Template Form</field>
         <field name="model">timesheet.description.template</field>
         <field name="arch" type="xml">
-            <form string="Description Template">
+            <form string="Timesheet Description Template">
                 <header>
                 </header>
                 <sheet>
@@ -26,7 +26,7 @@
         <field name="name">Timesheet Description Template List</field>
         <field name="model">timesheet.description.template</field>
         <field name="arch" type="xml">
-            <tree string="Description Templates" editable="top">
+            <tree string="Timesheet Description Templates" editable="top">
                 <field name="name"/>
                 <field name="active"/>
             </tree>
@@ -37,14 +37,15 @@
         <field name="name">Timesheet Description Template Search</field>
         <field name="model">timesheet.description.template</field>
         <field name="arch" type="xml">
-            <search string="Description Templates">
+            <search string="Timesheet Description Templates">
                 <field name="name"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
             </search>
         </field>
     </record>
 
     <record id="timesheet_description_template_action" model="ir.actions.act_window">
-        <field name="name">Description Templates</field>
+        <field name="name">Timesheet Description Templates</field>
         <field name="res_model">timesheet.description.template</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
