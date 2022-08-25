@@ -20,6 +20,21 @@ class PayrollEntry(models.Model):
         action["context"] = {"active_ids": self._context.get("active_ids")}
         return action
 
+    def write(self, vals):
+        payslips = self.mapped("payslip_id")
+
+        if payslips:
+            raise ValidationError(
+                _(
+                    "You cannot modify a Payroll Entry once a Payslip "
+                    "is linked to the Payroll Entry"
+                ).format(
+                    ", ".join(payslips.mapped("display_name"))
+                )
+            )
+
+        return super().write(vals)
+
     def unlink(self):
         payslips = self.mapped("payslip_id")
 
