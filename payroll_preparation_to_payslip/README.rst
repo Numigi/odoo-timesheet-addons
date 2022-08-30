@@ -74,9 +74,9 @@ When clicking on the button, the list of related payroll entries is displayed.
 
 .. image:: static/description/payroll_entry_list_from_smart_button.png
 
-Deleting Payroll Entries
-~~~~~~~~~~~~~~~~~~~~~~~~
-The module prevents deleting a payroll entry linked to a payslip.
+Updating and Deleting Payroll Entries
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The module prevents updating and deleting a payroll entry linked to a payslip.
 
 When doing so, a blocking message is displayed.
 

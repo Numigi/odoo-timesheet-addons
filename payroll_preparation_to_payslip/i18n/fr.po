@@ -171,3 +171,9 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:payroll_preparation_to_payslip.payroll_preparation_to_payslip_form
 msgid "Validate"
 msgstr "Valider"
+
+#. module: payroll_preparation_to_payslip
+#: code:addons/payroll_preparation_to_payslip/models/payroll_preparation_line.py:28
+#, python-format
+msgid "You cannot modify a Payroll Entry once a Payslip is linked to the Payroll Entry"
+msgstr "Vous ne pouvez pas modifier une entrée de paie si un bulletin de paie est associé."
