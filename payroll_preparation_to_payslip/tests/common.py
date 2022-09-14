@@ -10,6 +10,15 @@ class PayrollPreparationToPayslipCase(SavepointCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.company = cls.env["res.company"].create({"name": "Company A"})
+        cls.journal = cls.env['account.journal'].create({
+            'name': 'Test',
+            'code': 'TEST',
+            'type': 'general',
+        })
+        cls.env = cls.env(context=dict(
+            cls.env.context,
+            journal_id=cls.journal.id,
+        ))
 
         cls.payroll_manager = cls.env["res.users"].create(
             {
@@ -19,6 +28,7 @@ class PayrollPreparationToPayslipCase(SavepointCase):
                 "groups_id": [
                     (4, cls.env.ref("payroll_preparation.group_manager").id),
                     (4, cls.env.ref("hr_payroll.group_hr_payroll_manager").id),
+                    (4, cls.env.ref("account.group_account_user").id),
                 ],
                 "company_id": cls.company.id,
                 "company_ids": [(4, cls.company.id)],
@@ -47,6 +57,7 @@ class PayrollPreparationToPayslipCase(SavepointCase):
                 "wage": 50000,
                 "state": "open",
                 "struct_id": cls.structure.id,
+                "journal_id": cls.journal.id,
             }
         )
 
