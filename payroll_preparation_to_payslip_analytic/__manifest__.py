@@ -12,7 +12,6 @@
     "summary": "Analytical account transfer - "
                "Payroll entry to payroll calculation line",
     "depends": [
-        "show_payroll_preparation",
         "payroll_preparation_to_payslip",
         "hr_payroll_account",
     ],
