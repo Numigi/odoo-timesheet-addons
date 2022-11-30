@@ -12,8 +12,7 @@ class TestAccountAnalyticLine(common.SavepointCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.env.user.tz = False
-        cls.analytic_account = cls.env["account.analytic.account"].create(
-            {"name": "A1",}
+        cls.analytic_account = cls.env["account.analytic.account"].create({"name": "A1"}
         )
 
     @data(datetime(2016, 3, 24, 3), "2016-03-24 03:00:00")

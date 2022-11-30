@@ -1,4 +1,4 @@
-# © 2020 - today Numigi (tm) and all its contributors (https://bit.ly/numigiens)
+# © 2022 - today Numigi (tm) and all its contributors (https://bit.ly/numigiens)
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 import pytz
@@ -20,7 +20,6 @@ class AccountAnalyticLine(models.Model):
 
         return line
 
-    @api.multi
     def write(self, vals):
         super().write(vals)
 
