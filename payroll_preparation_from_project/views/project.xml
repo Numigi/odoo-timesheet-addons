@@ -21,24 +21,14 @@
         </field>
     </record>
 
-    <!--<record id="action_open_payroll_preparation_wizard" model="ir.actions.server">
+    <record id="action_open_payroll_preparation_wizard" model="ir.actions.server">
         <field name="name">Generate Payroll Entries</field>
         <field name="type">ir.actions.server</field>
         <field name="model_id" ref="project.model_project_project"/>
         <field name="binding_model_id" ref="project.model_project_project"/>
         <field name="state">code</field>
         <field name="code">action = record.open_payroll_preparation_wizard()</field>
-    </record>-->
-
-    <act_window
-        id="action_open_wizard"
-        name="Generate Payroll Entries"
-        res_model="payroll.preparation.from.project"
-        src_model="project.project"
-        view_mode="form"
-        target="new"
-        context="{'default_project_id': active_id}"
-        />
+    </record>
 
 
     <act_window
