@@ -25,7 +25,7 @@ USER odoo
 #COPY payroll_preparation_to_payslip /mnt/extra-addons/payroll_preparation_to_payslip
 #COPY payroll_preparation_to_payslip_analytic /mnt/extra-addons/payroll_preparation_to_payslip_analytic
 COPY project_timesheet_time_control_enhanced /mnt/extra-addons/project_timesheet_time_control_enhanced
-#COPY project_timesheet_time_control_sheet /mnt/extra-addons/project_timesheet_time_control_sheet
+COPY project_timesheet_time_control_sheet /mnt/extra-addons/project_timesheet_time_control_sheet
 COPY timesheet_description_template /mnt/extra-addons/timesheet_description_template
 
 #COPY timesheet_edit_only_today /mnt/extra-addons/timesheet_edit_only_today
