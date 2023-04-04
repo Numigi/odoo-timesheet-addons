@@ -1,4 +1,4 @@
-# © 2021 - today Numigi (tm) and all its contributors (https://bit.ly/numigiens)
+# © 2023 - today Numigi (tm) and all its contributors (https://bit.ly/numigiens)
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 import pytest
@@ -28,8 +28,8 @@ class TestTimesheet(common.SavepointCase):
         cls.sheet = cls.env["hr_timesheet.sheet"].create(
             {
                 "employee_id": cls.employee.id,
-                "date_from": cls.yesterday.date(),
-                "date_to": cls.yesterday.date(),
+                "date_start": cls.yesterday.date(),
+                "date_end": cls.yesterday.date(),
             }
         )
         cls.line = cls.env["account.analytic.line"].create(
