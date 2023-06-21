@@ -19,10 +19,12 @@ As member of the groups `Payroll Preparation / User` and `Payroll / Manager`,
 - I go to the form view of payroll entries, I see that the `Analytic Account` field has become mandatory:
 
 - I go to the list view of payroll entries, I select a set of entries witch have the same analytic account and I click on `Generate Payslips`.
-    .. image:: static/description/payroll_entries_generate_payslip.png
+    
+.. image:: static/description/payroll_entries_generate_payslip.png
 
 - I see that the analytic account is propagated on the Payslip and its calculation lines:
-    .. image:: static/description/analytic_account_propagation_to_payslip.png
+    
+.. image:: static/description/analytic_account_propagation_to_payslip.png
 
 
 Uniqueness Constraint
