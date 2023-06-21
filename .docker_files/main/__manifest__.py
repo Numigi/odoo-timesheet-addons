@@ -20,6 +20,7 @@
         'payroll_preparation_prorata',
         'payroll_preparation_to_payslip',
         'payroll_preparation_to_payslip_analytic',
+        'payroll_preparation_to_payslip_project',
         'project_timesheet_time_control_enhanced',
         'project_timesheet_time_control_sheet',
         'timesheet_edit_only_today',
