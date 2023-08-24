@@ -14,9 +14,9 @@ class Payslip(models.Model):
     )
 
     def unlink(self):
-        if self.state in ['draft', 'cancel'] and self.payroll_entry_ids:
-            self.with_context(
-                force_delete=True).payroll_entry_ids.payslip_id = False
-            return super().unlink()
-        else:
-            return super().unlink()
+        for rec in self:
+            if rec.state in ['draft', 'cancel'] and rec.payroll_entry_ids:
+                rec.with_context(
+                    force_delete=True).payroll_entry_ids.payslip_id = False
+                rec.unlink()
+        return super().unlink()
