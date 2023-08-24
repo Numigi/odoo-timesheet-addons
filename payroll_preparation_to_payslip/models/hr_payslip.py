@@ -18,5 +18,4 @@ class Payslip(models.Model):
             if rec.state in ['draft', 'cancel'] and rec.payroll_entry_ids:
                 rec.with_context(
                     force_delete=True).payroll_entry_ids.payslip_id = False
-                rec.unlink()
         return super().unlink()
