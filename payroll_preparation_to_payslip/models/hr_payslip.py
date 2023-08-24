@@ -12,3 +12,11 @@ class Payslip(models.Model):
         "payroll.preparation.line",
         "payslip_id",
     )
+
+    def unlink(self):
+        if self.state in ['draft', 'cancel'] and self.payroll_entry_ids:
+            self.with_context(
+                force_delete=True).payroll_entry_ids.payslip_id = False
+            return super().unlink()
+        else:
+            return super().unlink()
