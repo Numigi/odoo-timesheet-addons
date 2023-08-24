@@ -17,5 +17,5 @@ class Payslip(models.Model):
         for rec in self:
             if rec.state in ['draft', 'cancel'] and rec.payroll_entry_ids:
                 rec.with_context(
-                    force_delete=True).payroll_entry_ids.payslip_id = False
+                    force_delete=True).payroll_entry_ids.write({'payslip_id': False})
         return super().unlink()
