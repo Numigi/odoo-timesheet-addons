@@ -1,7 +1,7 @@
 # © 2021 - today Numigi (tm) and all its contributors (https://bit.ly/numigiens)
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from odoo import api, fields, models, _
+from odoo import fields, models, _
 from odoo.exceptions import ValidationError
 
 
@@ -22,8 +22,9 @@ class PayrollEntry(models.Model):
 
     def write(self, vals):
         payslips = self.mapped("payslip_id")
+        force_delete = self._context.get('force_delete')
 
-        if payslips:
+        if payslips and not force_delete:
             raise ValidationError(
                 _(
                     "You cannot modify a Payroll Entry once a Payslip "
