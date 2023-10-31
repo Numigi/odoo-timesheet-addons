@@ -2,10 +2,10 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import fields
-from odoo.addons.hr_holidays.tests.common import TestHrHolidaysCommon
+from odoo.addons.hr_holidays.tests.common import TestHrHolidaysBase
 
 
-class TestValidateHolidayDate(TestHrHolidaysCommon):
+class TestValidateHolidayDate(TestHrHolidaysBase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
