@@ -17,6 +17,8 @@ class TestValidateHolidayDate(TestHrHolidaysBase):
                 "name": "Paid Time Off",
                 "request_unit": "hour",
                 "leave_validation_type": "both",
+                "validity_start": fields.Datetime.from_string('2023-01-01 00:00:00'),
+                "validity_stop": fields.Datetime.from_string('2023-12-31 00:00:00')
             }
         )
         allocation = self.env["hr.leave.allocation"].create(
