@@ -14,9 +14,8 @@ class TestValidateHolidayDate(TestHrHolidaysBase):
         employee = self.employee_emp
         leave_type = self.env["hr.leave.type"].create(
             {
-                "name": "Paid Time Off",
+                "name": "Paid Time Off - Numigi",
                 "request_unit": "hour",
-                "leave_validation_type": "both",
                 "double_validation": True,
                 "validity_start": fields.Datetime.from_string('2023-01-01 00:00:00'),
                 "validity_stop": fields.Datetime.from_string('2023-12-31 00:00:00')
@@ -27,10 +26,10 @@ class TestValidateHolidayDate(TestHrHolidaysBase):
                 "name": "30 days allocation",
                 "holiday_status_id": leave_type.id,
                 "number_of_days": 30,
-                "employee_id": employee.id,
+                # "employee_id": employee.id,
             }
         )
-        allocation.action_approve()
+        allocation.sudo().action_approve()
 
         # leave 1 only for 1 day or half
         leave1 = self.env["hr.leave"].create(
