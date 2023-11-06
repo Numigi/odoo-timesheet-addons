@@ -42,8 +42,8 @@ class TestValidateHolidayDate(TestHrHolidaysBase):
                     "name": "Holiday 1 Day",
                     "employee_id": self.employee_emp_id,
                     "holiday_status_id": leave_type.id,
-                    "date_from": fields.Datetime.from_string("2023-12-11 08:00:00"),
-                    "date_to": fields.Datetime.from_string("2023-12-11 17:00:00"),
+                    "date_from": fields.Datetime.from_string("2023-09-20 08:00:00"),
+                    "date_to": fields.Datetime.from_string("2023-09-20 17:00:00"),
                     "number_of_days": 1,
                 }
             )
@@ -57,7 +57,7 @@ class TestValidateHolidayDate(TestHrHolidaysBase):
         )
 
         # leave 2 more than 1 day
-        date_start = fields.Datetime.from_string("2019-12-27 08:00:00")
+        date_start = fields.Datetime.from_string("2019-12-26 08:00:00")
         date_end = fields.Datetime.from_string("2019-12-29 17:00:00")
         leave2 = self.env["hr.leave"].create(
             {
