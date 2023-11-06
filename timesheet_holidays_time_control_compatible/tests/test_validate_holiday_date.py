@@ -70,7 +70,6 @@ class TestValidateHolidayDate(TestHrHolidaysBase):
             }
         )
         leave2.sudo().action_approve()
-        # leave2.sudo(self.user_hrmanager_id).action_validate()
 
         for timesheet_line in leave2.sudo().timesheet_ids:
             self.assertIn(timesheet_line.date, [date_start.date(), date_end.date()])
