@@ -3,7 +3,7 @@
 
 {
     "name": "Project Timesheet Time Control Sheet",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "category": "Project",
     "author": "Numigi",
     "summary": "Binding between the timesheet sheet and the time control widget",
