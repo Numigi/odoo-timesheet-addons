@@ -1,6 +1,8 @@
-Timesheet Holidays Time Control Compatible
-==========================================
-This module allows to approve leave requests in advance while associating them with the date selected by the employee, rather than saving them on the validation date.
+Timesheet Holidays Time Control Binging
+=======================================
+This module makes the module `project_timesheet_time_control <https://github.com/OCA/project/tree/12.0/project_timesheet_time_control>`_ compatible with `project_timesheet_holidays`.
+
+It allows to approve leave requests in advance while associating them with the date selected by the employee, rather than saving them on the validation date.
 
 Usage
 -----

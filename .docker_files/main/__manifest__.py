@@ -25,7 +25,7 @@
         'project_timesheet_time_control_sheet',
         'timesheet_edit_only_today',
         'timesheet_edit_only_today_grid',
-        'timesheet_holidays_time_control_compatible',
+        'timesheet_holidays_time_control_binding',
         'timesheet_list_description_after_task',
         'timesheet_list_employee',
         'timesheet_multi_line_wizard',
