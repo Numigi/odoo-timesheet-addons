@@ -72,4 +72,4 @@ class TestValidateHolidayDate(TestHrHolidaysBase):
         leave2.sudo().action_approve()
 
         for timesheet_line in leave2.sudo().timesheet_ids:
-            self.assertIn(timesheet_line.date, [date_start.date(), date_end.date()])
+            self.assertIn(timesheet_line.date_time, [date_start, date_end])
