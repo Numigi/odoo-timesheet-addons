@@ -36,6 +36,7 @@ COPY timesheet_multi_line_wizard /mnt/extra-addons/timesheet_multi_line_wizard
 COPY timesheet_multi_line_wizard_grid /mnt/extra-addons/timesheet_multi_line_wizard_grid
 COPY timesheet_multi_line_wizard_security /mnt/extra-addons/timesheet_multi_line_wizard_security
 COPY timesheet_payroll_period /mnt/extra-addons/timesheet_payroll_period
+COPY timesheet_reallocate /mnt/extra-addons/timesheet_reallocate
 COPY timesheet_validation_status /mnt/extra-addons/timesheet_validation_status
 COPY timesheet_validation_status_enterprise /mnt/extra-addons/timesheet_validation_status_enterprise
 

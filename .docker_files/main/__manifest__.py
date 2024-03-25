@@ -32,6 +32,7 @@
         'timesheet_multi_line_wizard_grid',
         'timesheet_multi_line_wizard_security',
         'timesheet_payroll_period',
+        'timesheet_reallocate',
         'timesheet_validation_status',
         'timesheet_validation_status_enterprise',
     ],

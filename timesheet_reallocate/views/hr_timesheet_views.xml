@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="action_server_transfer_timesheet" model="ir.actions.server">
+        <field name="name">Reimput</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="analytic.model_account_analytic_line"/>
+            <field name="binding_model_id" ref="analytic.model_account_analytic_line"/>
+        <field name="state">code</field>
+        <field name="code">model.action_transfer_timesheets()</field>
+    </record>
+
+</odoo>
