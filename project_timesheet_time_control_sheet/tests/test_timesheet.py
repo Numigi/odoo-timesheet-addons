@@ -32,6 +32,7 @@ class TestTimesheet(common.SavepointCase):
         )
         cls.line = cls.env["account.analytic.line"].create(
             {
+                "name": "My Account Analytic Line",
                 "employee_id": cls.employee.id,
                 "project_id": cls.project.id,
                 "unit_amount": 1,
