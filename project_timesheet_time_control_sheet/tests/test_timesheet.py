@@ -55,7 +55,8 @@ class TestTimesheet(common.SavepointCase):
 
     def test_delete_submitted_timesheet_with_closed_timer(self):
         self.sheet.state = "confirm"
-        self.line.sheet_id = self.sheet.id
+        with pytest.raises(UserError):
+            self.line.sheet_id = self.sheet.id
         with pytest.raises(UserError):
             self.line.unlink()
 
