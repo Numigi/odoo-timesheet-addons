@@ -32,6 +32,7 @@ class TestTimesheet(common.SavepointCase):
         )
         cls.line = cls.env["account.analytic.line"].create(
             {
+                "name": "My Account Analytic Line",
                 "employee_id": cls.employee.id,
                 "project_id": cls.project.id,
                 "unit_amount": 1,
@@ -54,7 +55,8 @@ class TestTimesheet(common.SavepointCase):
 
     def test_delete_submitted_timesheet_with_closed_timer(self):
         self.sheet.state = "confirm"
-        self.line.sheet_id = self.sheet.id
+        with pytest.raises(UserError):
+            self.line.sheet_id = self.sheet.id
         with pytest.raises(UserError):
             self.line.unlink()
 
