@@ -1,4 +1,4 @@
-# © 2019 - today Numigi (tm) and all its contributors (https://bit.ly/numigiens)
+# © 2024 - Numigi (tm) and all its contributors (https://bit.ly/numigiens)
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 {
@@ -11,29 +11,7 @@
     'category': 'Other',
     'summary': 'Install all addons required for testing.',
     'depends': [
-        # 'payroll_code_on_task_type',
-        # 'payroll_period',
-        # 'payroll_preparation',
-        # 'payroll_preparation_export_wizard',
-        # 'payroll_preparation_from_project',
-        # 'payroll_preparation_from_timesheet',
-        # 'payroll_preparation_prorata',
-        # 'payroll_preparation_to_payslip',
-        # 'payroll_preparation_to_payslip_analytic',
-        'project_timesheet_time_control_enhanced',
-        'project_timesheet_time_control_sheet',
-        'timesheet_description_template',
-        'timesheet_holidays_time_control_compatible',
-        # 'timesheet_edit_only_today',
-        # 'timesheet_edit_only_today_grid',
-        # 'timesheet_list_description_after_task',
-        # 'timesheet_list_employee',
-        # 'timesheet_multi_line_wizard',
-        # 'timesheet_multi_line_wizard_grid',
-        # 'timesheet_multi_line_wizard_security',
-        # 'timesheet_payroll_period',
-        # 'timesheet_validation_status',
-        # 'timesheet_validation_status_enterprise',
+        "hr_timesheet",
     ],
     'installable': True,
 }
