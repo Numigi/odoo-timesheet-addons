@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0\n"
+"Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-21 07:51+0000\n"
-"PO-Revision-Date: 2024-03-21 07:51+0000\n"
+"POT-Creation-Date: 2024-06-28 22:40+0000\n"
+"PO-Revision-Date: 2024-06-28 22:40+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,46 +16,41 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: timesheet_reallocate
-#: model:ir.model,name:timesheet_reallocate.model_account_analytic_line
-msgid "Analytic Line"
-msgstr "Ligne analytique"
+#: code:addons/timesheet_reallocate/wizard/hr_timesheet_transfer.py:97
+#, python-format
+msgid "Auto reallocation: %s, Rallocation Reason: %s, Target Task: %s"
+msgstr "Réimputation de temps: %s, Motif de réimputation: %s, Target Task: %s"
 
 #. module: timesheet_reallocate
-#: code:addons/timesheet_reallocate/wizard/hr_timesheet_transfer.py:77
+#: code:addons/timesheet_reallocate/wizard/hr_timesheet_transfer.py:83
 #, python-format
-msgid "Auto reimput of <br/> Original task: TA#"
-msgstr "Réimputation automatique <br/> Tâche d'origine: TA#"
-
-#. module: timesheet_reallocate
-#: code:addons/timesheet_reallocate/wizard/hr_timesheet_transfer.py:85
-#, python-format
-msgid "Auto reimput of <br/> Reimput reason :<br/> Target task: TA#"
-msgstr "Réimputation automatique <br/> Motif de réimputation :<br/> Tâche cible: TA#"
+msgid "Auto reallocation: %s, Tasks: %s"
+msgstr "Réimputation de temps: %s, Tâches: %s"
 
 #. module: timesheet_reallocate
 #: model_terms:ir.ui.view,arch_db:timesheet_reallocate.timesheet_transfer_wizard_form
 msgid "Cancel"
-msgstr "Annuler"
+msgstr ""
 
 #. module: timesheet_reallocate
 #: model:ir.model.fields,field_description:timesheet_reallocate.field_hr_timesheet_transfer__create_uid
 msgid "Created by"
-msgstr "Créé par"
+msgstr ""
 
 #. module: timesheet_reallocate
 #: model:ir.model.fields,field_description:timesheet_reallocate.field_hr_timesheet_transfer__create_date
 msgid "Created on"
-msgstr "Créé le"
+msgstr ""
 
 #. module: timesheet_reallocate
 #: model:ir.model.fields,field_description:timesheet_reallocate.field_hr_timesheet_transfer__date_time
-msgid "Date of Reimputation"
-msgstr "Date de réimputation"
+msgid "Date"
+msgstr ""
 
 #. module: timesheet_reallocate
 #: model:ir.model.fields,field_description:timesheet_reallocate.field_hr_timesheet_transfer__display_name
 msgid "Display Name"
-msgstr "Nom affiché"
+msgstr ""
 
 #. module: timesheet_reallocate
 #: model:ir.model.fields,field_description:timesheet_reallocate.field_hr_timesheet_transfer__id
@@ -65,17 +60,17 @@ msgstr ""
 #. module: timesheet_reallocate
 #: model:ir.model.fields,field_description:timesheet_reallocate.field_hr_timesheet_transfer____last_update
 msgid "Last Modified on"
-msgstr "Dernière Modification le"
+msgstr ""
 
 #. module: timesheet_reallocate
 #: model:ir.model.fields,field_description:timesheet_reallocate.field_hr_timesheet_transfer__write_uid
 msgid "Last Updated by"
-msgstr "Dernière mise à jour par"
+msgstr ""
 
 #. module: timesheet_reallocate
 #: model:ir.model.fields,field_description:timesheet_reallocate.field_hr_timesheet_transfer__write_date
 msgid "Last Updated on"
-msgstr "Dernière mise à jour le"
+msgstr ""
 
 #. module: timesheet_reallocate
 #: model:ir.model.fields,field_description:timesheet_reallocate.field_hr_timesheet_transfer__project_id
@@ -83,27 +78,16 @@ msgid "Project"
 msgstr "Projet"
 
 #. module: timesheet_reallocate
-#: model:ir.model.fields,field_description:timesheet_reallocate.field_hr_timesheet_transfer__reason
-msgid "Reason for Reimputation"
-msgstr "Motif de réimputation"
-
-#. module: timesheet_reallocate
-#: model_terms:ir.ui.view,arch_db:timesheet_reallocate.timesheet_transfer_wizard_form
-msgid "Reason of Reimputation"
-msgstr "Motif de réimputation"
-
-#. module: timesheet_reallocate
 #: model:ir.actions.act_window,name:timesheet_reallocate.timesheet_transfer_wizard_action
 #: model_terms:ir.ui.view,arch_db:timesheet_reallocate.timesheet_transfer_wizard_form
-msgid "Reimput"
-msgstr "Transfert de feuille de temps"
+msgid "Reallocate"
+msgstr "Réimputation"
 
 #. module: timesheet_reallocate
-#: code:addons/timesheet_reallocate/wizard/hr_timesheet_transfer.py:52
-#: code:addons/timesheet_reallocate/wizard/hr_timesheet_transfer.py:60
-#, python-format
-msgid "Reimput of timesheet - Task "
-msgstr "Réimputation de temps - Tâche "
+#: model:ir.model.fields,field_description:timesheet_reallocate.field_hr_timesheet_transfer__reason
+#: model_terms:ir.ui.view,arch_db:timesheet_reallocate.timesheet_transfer_wizard_form
+msgid "Reallocation Reason"
+msgstr "Motif de réimputation"
 
 #. module: timesheet_reallocate
 #: model:ir.model.fields,field_description:timesheet_reallocate.field_hr_timesheet_transfer__task_id
@@ -111,22 +95,28 @@ msgid "Task"
 msgstr "Tâche"
 
 #. module: timesheet_reallocate
+#: code:addons/timesheet_reallocate/wizard/hr_timesheet_transfer.py:53
+#, python-format
+msgid "Timesheet Reallocation - Task %s - %s"
+msgstr "Reaimputation de temps - Tâche %s - %s"
+
+#. module: timesheet_reallocate
 #: model:ir.model,name:timesheet_reallocate.model_hr_timesheet_transfer
 msgid "Timesheet Transfer"
-msgstr "Transfert de feuille de temps"
+msgstr "Transfert des feuilles de temps"
 
 #. module: timesheet_reallocate
 #: model:ir.model.fields,field_description:timesheet_reallocate.field_hr_timesheet_transfer__timesheet_ids
 msgid "Timesheets"
-msgstr "Feuille de temps"
+msgstr "Feuilles de temps"
 
 #. module: timesheet_reallocate
 #: model_terms:ir.ui.view,arch_db:timesheet_reallocate.timesheet_transfer_wizard_form
 msgid "Transfer Timesheets"
-msgstr "Transfert de feuille de temps"
+msgstr "Transferer les feuilles de temps"
 
 #. module: timesheet_reallocate
-#: code:addons/timesheet_reallocate/wizard/hr_timesheet_transfer.py:42
+#: code:addons/timesheet_reallocate/wizard/hr_timesheet_transfer.py:47
 #, python-format
 msgid "You cannot reverse an analytic line that is not a timesheet."
 msgstr "Vous ne pouvez pas renverser une ligne analytique qui n’est pas une feuille de temps."

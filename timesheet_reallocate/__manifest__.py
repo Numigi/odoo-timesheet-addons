@@ -14,7 +14,6 @@
     ],
     "summary": "Automate a movement of the timeline from one project to another.",
     "data": [
-        "views/account_analytic_line_views.xml",
         "wizard/hr_timesheet_transfer_views.xml",
     ],
     "installable": True,

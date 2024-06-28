@@ -5,18 +5,22 @@
         <field name="name">Timesheet Transfer</field>
         <field name="model">hr.timesheet.transfer</field>
         <field name="arch" type="xml">
-            <form string="Reimput">
+            <form string="Reallocate">
                 <sheet>
-                    <label for="reason" string="Reason of Reimputation" class="oe_edit_only"/>
-                    <br/>
-                    <field name="reason" required="1"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="reason" placeholder="Reallocation Reason"/>
+                        </h1>
+                    </div>
                     <group>
-                        <field name="date_time"  required="1"/>
+                        <group>
+                            <field name="date_time"  required="1"/>
+                        </group>
+                        <group>
+                            <field name="project_id" required="1"/>
+                            <field name="task_id" required="1"/>
+                        </group>
                     </group>
-                    <group>
-                        <field name="project_id" required="1"/>
-                        <field name="task_id" required="1"/>
-                     </group>
                     <group>
                         <field name="timesheet_ids"/>
                     </group>
@@ -30,7 +34,7 @@
     </record>
 
     <record id="timesheet_transfer_wizard_action" model="ir.actions.act_window">
-        <field name="name">Reimput</field>
+        <field name="name">Reallocate</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hr.timesheet.transfer</field>
         <field name="binding_model_id" ref="analytic.model_account_analytic_line"/>
