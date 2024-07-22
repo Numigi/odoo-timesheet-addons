@@ -4,15 +4,15 @@
 from odoo.addons.hr_timesheet.tests.test_timesheet import (
     TestCommonTimesheet,
 )
+from odoo.addons.resource.models.resource import float_to_time
+
 from datetime import datetime
 
 
-class ReversingTimesheet(TestCommonTimesheet):
+class TestReversingTimesheet(TestCommonTimesheet):
+
     def setUp(self):
-        super(ReversingTimesheet, self).setUp()
-
-
-class TestReversingTimesheet(ReversingTimesheet):
+        super(TestReversingTimesheet, self).setUp()
 
     def test_action_transfer(self):
         # Create a timesheet line with project_id and task_id
@@ -38,87 +38,53 @@ class TestReversingTimesheet(ReversingTimesheet):
 
         # Call the action_transfer method
         self.wizard.action_transfer()
-
-        timesheet.refresh()
-
-        # Check if the timesheet line is reversed
-        self.assertEqual(timesheet.unit_amount, -1.35)
-
-        # Check if new timesheet line is created
-        new_timesheet = self.env["account.analytic.line"].search(
-            [("unit_amount", "=", 1.35)]
-        )
-        self.assertTrue(new_timesheet)
-
-        new_timesheet.refresh()
+        self.assertEquals(len(self.task1.timesheet_ids), 2,
+                          "Reverset timesheet should be added to task 1")
+        self.assertEqual(self.task1.timesheet_ids[1].unit_amount, -1.35,
+                         "Reverset timesheet sould be equal to -1.35")
+        self.assertEquals(len(self.task2.timesheet_ids), 1,
+                          "New timesheet should be added to task 2")
+        self.assertEqual(self.task2.timesheet_ids[0].unit_amount, 1.35,
+                         "Reverset timesheet sould be equal to 1.35")
 
         # Check if new_timesheet description is correct
-        new_name = (
-            "Reimput of timesheet - Task "
-            + str(timesheet.task_id.id or "_")
-            + " - "
-            + "Test Timesheet"
+        new_name = "Timesheet Reallocation - Task %s - %s" % (
+            timesheet.task_id.display_name, timesheet.name
         )
-        self.assertEqual(new_timesheet.name, new_name)
+        self.assertEqual(self.task2.timesheet_ids[0].name, new_name)
 
         # Check if new_timesheet project_id is correct
-        self.assertEqual(new_timesheet.project_id, self.project_customer)
+        self.assertEqual(self.task2.timesheet_ids[0].project_id,
+                         self.project_customer)
 
         # Check if new_timesheet task_id is correct
-        self.assertEqual(new_timesheet.task_id, self.task2)
+        self.assertEqual(self.task2.timesheet_ids[0].task_id, self.task2)
 
         # Check if new_timesheet date_time is correct
-        # Remove the milliseconds from the datetime.now() to compare
-        self.assertEqual(new_timesheet.date_time, datetime.now().replace(microsecond=0))
+        self.assertEqual(self.task2.timesheet_ids[0].date_time,
+                         datetime.now().replace(microsecond=0))
 
-        # Check if timesheet description is correct
-        new_name = (
-            "Reimput of timesheet - Task "
-            + str(new_timesheet.task_id.id or "_")
-            + " - "
-            + "Test Timesheet"
-        )
+        # Check the note added in the source task in chatter
+        task_msg = (
+                "<p>Auto reallocation: - %s, Rallocation Reason: %s, Target Task: %s</p>" % (
+                    float_to_time(self.task1.timesheet_ids[0].unit_amount),
+                    "Test Reimputation",
+                    self.task2.display_name
+                )
+            )
         self.assertEqual(
-            timesheet.name,
-            new_name,
+            self.task1.message_ids[0].body,
+            task_msg,
         )
 
-        # Check if timesheet unit_amount is correct
-        self.assertEqual(timesheet.unit_amount, -1.35)
-
-        # Check if timesheet_note was created on timesheet in chatter
-        # Note that <br/> tag is converted by Odoo to <br> tag
-        timesheet_template = (
-            "<p>Auto reimput of "
-            + self.wizard.float_to_time(timesheet.unit_amount)
-            + "<br> Reimput reason :"
-            + self.wizard.reason
-            + "<br> Target task: TA#"
-            + str(new_timesheet.task_id.id or "_")
-            + "</p>"
-        )
+        # Check the note added in the target task in chatter
+        task_msg = (
+                "<p>Auto reallocation: %s, Tasks: %s</p>" % (
+                    float_to_time(self.task2.timesheet_ids[0].unit_amount),
+                    self.task1.display_name
+                )
+            )
         self.assertEqual(
-            timesheet.message_ids[0].body,
-            timesheet_template,
+            self.task2.message_ids[0].body,
+            task_msg,
         )
-
-        # Check if new_timesheet_note was created on new_timesheet in chatter
-        # Note that <br/> tag is converted by Odoo to <br> tag
-        new_timesheet_template = (
-            "<p>Auto reimput of "
-            + self.wizard.float_to_time(new_timesheet.unit_amount)
-            + "<br> Original task: TA#"
-            + str(timesheet.task_id.id or "_")
-            + "</p>"
-        )
-        self.assertEqual(
-            new_timesheet.message_ids[0].body,
-            new_timesheet_template,
-        )
-
-    def test_float_to_time(self):
-        self.wizard = self.env["hr.timesheet.transfer"].create({})
-        # Check if float_to_time method converts float to time
-        self.assertEqual(self.wizard.float_to_time(1.5), "01:30")
-        self.assertEqual(self.wizard.float_to_time(12), "12:00")
-        self.assertEqual(self.wizard.float_to_time(-2.5), "-02:30")
