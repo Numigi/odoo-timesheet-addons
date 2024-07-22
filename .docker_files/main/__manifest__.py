@@ -30,6 +30,7 @@
         'timesheet_multi_line_wizard',
         'timesheet_multi_line_wizard_security',
         'timesheet_payroll_period',
+        'timesheet_reallocate',
         'timesheet_validation_status',
     ],
     'installable': True,
