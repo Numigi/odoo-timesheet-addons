@@ -77,11 +77,9 @@ class HrTimesheetTransfer(models.TransientModel):
         self.ensure_one()
         list_tasks = self.timesheet_ids.mapped('task_id')
         # Note in the target task
-        target_task_msg = _(
-            "Auto reallocation: %s, Tasks: %s" % (
-                float_to_time(sum(self.timesheet_ids.mapped('unit_amount'))),
-                ", ".join(task.display_name for task in list_tasks)
-            )
+        target_task_msg = _("Auto reallocation: %s, Tasks: %s") % (
+            float_to_time(sum(self.timesheet_ids.mapped("unit_amount"))),
+            ", ".join(task.display_name for task in list_tasks),
         )
         self.task_id.message_post(
             subject="Reallocation",
@@ -93,11 +91,11 @@ class HrTimesheetTransfer(models.TransientModel):
         for task in list_tasks:
             task_timsheets = self.timesheet_ids.filtered(lambda t: t.task_id == task)
             task_msg = _(
-                "Auto reallocation: - %s, Rallocation Reason: %s, Target Task: %s" % (
-                    float_to_time(sum(task_timsheets.mapped('unit_amount'))),
-                    self.reason,
-                    self.task_id.display_name
-                )
+                "Auto reallocation: - %s, Rallocation Reason: %s, Target Task: %s"
+            ) % (
+                float_to_time(sum(task_timsheets.mapped("unit_amount"))),
+                self.reason,
+                self.task_id.display_name,
             )
             task.message_post(
                 subject="Reallocation",
