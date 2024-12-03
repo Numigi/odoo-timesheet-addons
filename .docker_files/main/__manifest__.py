@@ -24,6 +24,7 @@
         'project_timesheet_time_control_enhanced',
         'project_timesheet_time_control_sheet',
         'timesheet_edit_only_today',
+        'timesheet_filter_closed_task',
         'timesheet_holidays_time_control_binding',
         'timesheet_list_description_after_task',
         'timesheet_list_employee',
