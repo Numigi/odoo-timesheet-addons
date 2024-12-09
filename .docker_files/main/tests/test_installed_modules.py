@@ -11,5 +11,5 @@ class TestModules(TransactionCase):
     """
 
     def test_main_is_installed(self):
-        module = self.env['ir.module.module'].search([('name', '=', 'main')])
-        assert module.state == 'installed'
+        module = self.env["ir.module.module"].search([("name", "=", "main")])
+        assert module.state == "installed"
