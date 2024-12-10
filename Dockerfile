@@ -28,6 +28,7 @@ COPY payroll_preparation_to_payslip_project /mnt/extra-addons/payroll_preparatio
 COPY project_timesheet_time_control_enhanced /mnt/extra-addons/project_timesheet_time_control_enhanced
 COPY project_timesheet_time_control_sheet /mnt/extra-addons/project_timesheet_time_control_sheet
 COPY timesheet_edit_only_today /mnt/extra-addons/timesheet_edit_only_today
+COPY timesheet_filter_closed_task /mnt/extra-addons/timesheet_filter_closed_task
 COPY timesheet_holidays_time_control_binding /mnt/extra-addons/timesheet_holidays_time_control_binding
 COPY timesheet_list_description_after_task /mnt/extra-addons/timesheet_list_description_after_task
 COPY timesheet_list_employee /mnt/extra-addons/timesheet_list_employee
