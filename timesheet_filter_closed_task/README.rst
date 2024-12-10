@@ -1,7 +1,7 @@
 Timesheet Filter Closed Task
 ============================
 
-This module ensures that only open tasks are available in the task selection list when recording timesheets. 
+This module ensures that only open tasks are displayed in the task selection list when recording timesheets. 
 
 
 Usage

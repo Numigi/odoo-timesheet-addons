@@ -9,7 +9,8 @@
     "website": "https://bit.ly/numigi-com",
     "license": "LGPL-3",
     "category": "Timesheets",
-    "summary": "Ensures that only open tasks when recording timesheets.",
+    "summary": """Ensures that only open tasks are
+    displayed when recording timesheets.""",
     "depends": [
         "hr_timesheet",
         "project_stage_closed",
