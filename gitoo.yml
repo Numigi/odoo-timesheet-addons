@@ -24,6 +24,7 @@
   branch: "12.0"
   includes:
     - hr_timesheet_sheet
+    - project_task_stage_allow_timesheet
 
 - url: https://github.com/OCA/web
   branch: "12.0"
