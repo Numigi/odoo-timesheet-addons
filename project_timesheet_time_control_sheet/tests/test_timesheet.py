@@ -19,9 +19,7 @@ class TestTimesheet(common.SavepointCase):
                 "email": "test@test.com",
             }
         )
-        cls.project = cls.env["project.project"].create(
-            {"name": "My Project"}
-        )
+        cls.project = cls.env["project.project"].create({"name": "My Project"})
         cls.employee = cls.env["hr.employee"].create(
             {"name": "My Employee", "user_id": cls.user.id}
         )
@@ -34,13 +32,15 @@ class TestTimesheet(common.SavepointCase):
         )
         cls.line = cls.env["account.analytic.line"].create(
             {
+                "name": "My Account Analytic Line",
                 "employee_id": cls.employee.id,
                 "project_id": cls.project.id,
                 "unit_amount": 1,
                 "sheet_id": cls.sheet.id,
                 "date": cls.yesterday.date(),
                 "date_time": cls.yesterday,
-            })
+            }
+        )
 
     def test_sheet_not_propagated_to_new_line(self):
         wizard = self._new_wizard(self.line)
@@ -56,10 +56,13 @@ class TestTimesheet(common.SavepointCase):
     def test_delete_submitted_timesheet_with_closed_timer(self):
         self.sheet.state = "confirm"
         with pytest.raises(UserError):
+            self.line.sheet_id = self.sheet.id
+        with pytest.raises(UserError):
             self.line.unlink()
 
     def test_submit_timesheet_with_open_timer(self):
         self.line.unit_amount = 0
+        self.line.sheet_id = self.sheet.id
         with pytest.raises(ValidationError):
             self.sheet.action_timesheet_confirm()
 

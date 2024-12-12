@@ -8,38 +8,37 @@
         <field name="arch" type="xml">
             <button name="toggle_active" position="before">
                 <button
-                    name="view_payroll_entries"
-                    type="object"
-                    class="oe_stat_button"
-                    icon="fa-usd"
-                    groups="payroll_preparation.group_user"
-                    attrs="{'invisible': [('payroll_entry_count', '=', 0)]}"
-                    >
+                        name="view_payroll_entries"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-usd"
+                        groups="payroll_preparation.group_user"
+                        attrs="{'invisible': [('payroll_entry_count', '=', 0)]}"
+                >
                     <field name="payroll_entry_count" widget="statinfo" string="Payroll Entries"/>
                 </button>
             </button>
         </field>
     </record>
 
-    <act_window
-        id="action_open_wizard"
-        name="Generate Payroll Entries"
-        res_model="payroll.preparation.from.project"
-        src_model="project.project"
-        view_mode="form"
-        target="new"
-        context="{'default_project_id': active_id}"
-        />
+    <record id="action_open_payroll_preparation_wizard" model="ir.actions.server">
+        <field name="name">Generate Payroll Entries</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="project.model_project_project"/>
+        <field name="binding_model_id" ref="project.model_project_project"/>
+        <field name="state">code</field>
+        <field name="code">action = record.open_payroll_preparation_wizard()</field>
+    </record>
 
 
     <act_window
-        id="action_cancel_payroll_entries_wizard"
-        name="Cancel Payroll Entries"
-        res_model="payroll.preparation.project.cancel"
-        src_model="project.project"
-        view_mode="form"
-        target="new"
-        context="{'default_project_id': active_id}"
-        />
+            id="action_cancel_payroll_entries_wizard"
+            name="Cancel Payroll Entries"
+            res_model="payroll.preparation.project.cancel"
+            src_model="project.project"
+            view_mode="form"
+            target="new"
+            context="{'default_project_id': active_id}"
+    />
 
 </odoo>

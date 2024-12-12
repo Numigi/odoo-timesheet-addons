@@ -55,3 +55,10 @@ class TestPayslip(PayrollPreparationToPayslipCase):
 
     def _get_payslip_line(self):
         return self.payslip.line_ids.filtered(lambda l: l.salary_rule_id == self.rule)
+
+    def test_delete_draft_payslip_with_payroll_entry_ids(self):
+        self.payslip.unlink()
+
+    def test_delete_canceled_payslip_with_payroll_entry_ids(self):
+        self.payslip.action_payslip_cancel()
+        self.payslip.unlink()

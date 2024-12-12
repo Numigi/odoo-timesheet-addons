@@ -3,7 +3,7 @@
 
 {
     "name": "Payroll Preparation To Payslip",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "author": "Numigi",
     "maintainer": "Numigi",
     "website": "https://www.numigi.com",

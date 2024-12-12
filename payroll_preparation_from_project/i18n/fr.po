@@ -109,3 +109,10 @@ msgstr "Valider"
 
 #~ msgid "You may not modify the project line {} because it is linked to a payroll entry."
 #~ msgstr "Vous ne pouvez pas modifier la ligne de temps {} car elle est liée à une entrée de paie."
+
+#. module: payroll_preparation_from_project
+#: model:ir.actions.act_window,name:payroll_preparation_from_project.payroll_preparation_from_project_action
+#: model:ir.actions.server,name:payroll_preparation_from_project.action_open_payroll_preparation_wizard
+#: model_terms:ir.ui.view,arch_db:payroll_preparation_from_project.payroll_preparation_from_project_form
+msgid "Generate Payroll Entries"
+msgstr "Générer les entrées de paie"

@@ -1,6 +1,3 @@
-- url: https://{{GIT_TOKEN}}@github.com/Numigi/odoo-enterprise
-  branch: "12.0"
-
 - url: https://github.com/Numigi/odoo-base-addons
   branch: "12.0"
   includes:
@@ -27,6 +24,7 @@
   branch: "12.0"
   includes:
     - hr_timesheet_sheet
+    - project_task_stage_allow_timesheet
 
 - url: https://github.com/OCA/web
   branch: "12.0"

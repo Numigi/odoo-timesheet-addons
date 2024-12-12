@@ -24,18 +24,19 @@ COPY payroll_preparation_from_timesheet /mnt/extra-addons/payroll_preparation_fr
 COPY payroll_preparation_prorata /mnt/extra-addons/payroll_preparation_prorata
 COPY payroll_preparation_to_payslip /mnt/extra-addons/payroll_preparation_to_payslip
 COPY payroll_preparation_to_payslip_analytic /mnt/extra-addons/payroll_preparation_to_payslip_analytic
+COPY payroll_preparation_to_payslip_project /mnt/extra-addons/payroll_preparation_to_payslip_project
 COPY project_timesheet_time_control_enhanced /mnt/extra-addons/project_timesheet_time_control_enhanced
 COPY project_timesheet_time_control_sheet /mnt/extra-addons/project_timesheet_time_control_sheet
 COPY timesheet_edit_only_today /mnt/extra-addons/timesheet_edit_only_today
-COPY timesheet_edit_only_today_grid /mnt/extra-addons/timesheet_edit_only_today_grid
+COPY timesheet_filter_closed_task /mnt/extra-addons/timesheet_filter_closed_task
+COPY timesheet_holidays_time_control_binding /mnt/extra-addons/timesheet_holidays_time_control_binding
 COPY timesheet_list_description_after_task /mnt/extra-addons/timesheet_list_description_after_task
 COPY timesheet_list_employee /mnt/extra-addons/timesheet_list_employee
 COPY timesheet_multi_line_wizard /mnt/extra-addons/timesheet_multi_line_wizard
-COPY timesheet_multi_line_wizard_grid /mnt/extra-addons/timesheet_multi_line_wizard_grid
 COPY timesheet_multi_line_wizard_security /mnt/extra-addons/timesheet_multi_line_wizard_security
 COPY timesheet_payroll_period /mnt/extra-addons/timesheet_payroll_period
+COPY timesheet_reallocate /mnt/extra-addons/timesheet_reallocate
 COPY timesheet_validation_status /mnt/extra-addons/timesheet_validation_status
-COPY timesheet_validation_status_enterprise /mnt/extra-addons/timesheet_validation_status_enterprise
 
 COPY .docker_files/main /mnt/extra-addons/main
 COPY .docker_files/odoo.conf /etc/odoo
