@@ -11,7 +11,6 @@
     "category": "Other",
     "summary": "Install all addons required for testing.",
     "depends": [
-        "hr_timesheet",
         "hr_timesheet_project_parent",
         "project_timesheet_time_control_sheet",
     ],
