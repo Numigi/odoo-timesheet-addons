@@ -3,13 +3,16 @@
 
 {
     "name": "Main Module",
-    "version": "1.0.0",
+    "version": "16.0.1.0.0",
     "author": "Numigi",
     "maintainer": "Numigi",
     "website": "https://www.numigi.com",
     "license": "LGPL-3",
     "category": "Other",
     "summary": "Install all addons required for testing.",
-    "depends": ["hr_timesheet", "hr_timesheet_project_parent"],
+    "depends": [
+        "hr_timesheet_project_parent",
+        "project_timesheet_time_control_sheet",
+    ],
     "installable": True,
 }
