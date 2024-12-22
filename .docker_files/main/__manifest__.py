@@ -13,6 +13,7 @@
     "depends": [
         "hr_timesheet_project_parent",
         "project_timesheet_time_control_sheet",
+        "timesheet_holidays_time_control_binding",
     ],
     "installable": True,
 }
