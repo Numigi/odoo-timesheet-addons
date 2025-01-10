@@ -13,7 +13,6 @@
     "depends": [
         "hr_timesheet_project_parent",
         "project_timesheet_time_control_sheet",
-        "timesheet_project_change_analytic_account",
         "timesheet_task_project_no_change",
     ],
     "installable": True,
