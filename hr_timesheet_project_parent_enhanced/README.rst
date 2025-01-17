@@ -1,4 +1,4 @@
-Hr Timesheet Project Parent
+Hr Timesheet Project Parent Enhanced
 ====================================
 
 This module adds constraints and features related to timesheets and parent-child relationships between projects. It enhances the existing functionalities provided by the OCA module `project_parent`, with a focus on timesheets and their integration into project hierarchies.
@@ -27,7 +27,12 @@ Features
 .. image:: static/description/error_change_parent_id.png
 
 **Enhanced Views**
-    - Displays the parent project in analytic line views for better visibility.
+    - Displays the parent project in analytic line views for better visibility (either in list or form view).
+    eg. : `My parent project, My iteration`
+
+.. image:: static/description/parent_project_name_list_view.png
+
+.. image:: static/description/parent_project_name_form_view.png
 
     - Allows filtering timesheets based on the parent project.
 
