@@ -58,11 +58,11 @@ class TestProjectTimesheetAnalyticUpdate(TransactionCase):
 
     def test_if_no_analytic_account__no_warning_raised(self):
         project = self.env["project.project"].new()
-        result = project._onchange_account_id()
+        result = project._onchange_analytic_account_id()
         assert not result
 
     def test_if_analytic_account_set__warning_raised(self):
         project = self.env["project.project"].new()
         project.analytic_account_id = self.analytic_account_1
-        result = project._onchange_account_id()
+        result = project._onchange_analytic_account_id()
         assert "warning" in result
