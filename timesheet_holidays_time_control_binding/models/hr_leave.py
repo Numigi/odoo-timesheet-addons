@@ -11,6 +11,7 @@ class HrLeave(models.Model):
 
     def action_validate(self):
         res = super().action_validate()
+        self = self.with_context(holidays_time_control=True)
         for holiday in self:
             if holiday.timesheet_ids:
                 for timesheet_line in holiday.timesheet_ids:

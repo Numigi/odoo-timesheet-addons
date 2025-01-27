@@ -48,28 +48,26 @@ class TestValidateHolidayDate(TestHrHolidaysCommon):
                 }
             )
         )
-        leave1.sudo().action_approve()
+        leave1.sudo().action_validate()
 
         self.assertEqual(
             leave1.sudo().timesheet_ids[0].date,
             leave1.sudo().date_from.date(),
             msg=None,
         )
-
         # leave 2 more than 1 day
-        date_start = fields.Datetime.from_string("2019-12-26 08:00:00")
-        date_end = fields.Datetime.from_string("2019-12-29 17:00:00")
+        date_start = fields.Datetime.from_string("2023-09-21 08:00:00")
+        date_end = fields.Datetime.from_string("2023-09-24 17:00:00")
         leave2 = self.env["hr.leave"].create(
             {
                 "name": "Holiday 3 Days",
                 "employee_id": self.employee_emp_id,
                 "holiday_status_id": leave_type.id,
-                "request_date_from": date_start,
-                "request_date_to": date_end,
-                "number_of_days": 2,
+                "date_from": date_start,
+                "date_to": date_end,
             }
         )
-        leave2.sudo().action_approve()
 
+        leave2.sudo().action_validate()
         for timesheet_line in leave2.sudo().timesheet_ids:
-            self.assertIn(timesheet_line.date_time, [date_start, date_end])
+            self.assertTrue(date_start <= timesheet_line.date_time <= date_end)
