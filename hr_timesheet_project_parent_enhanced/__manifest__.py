@@ -2,14 +2,18 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 {
-    "name": "Hr Timesheet Project Parent",
+    "name": "Hr Timesheet Project Parent Enhanced",
     "version": "16.0.1.0.0",
     "author": "Numigi",
     "maintainer": "Numigi",
     "website": "https://bit.ly/numigi-com",
     "license": "LGPL-3",
     "category": "Project",
-    "depends": ["hr_timesheet", "project_parent"],
+    "summary": """
+        Adds constraints and features related to timesheets
+        and parent-child relationships between projects.
+    """,
+    "depends": ["hr_timesheet", "project_parent_enhanced"],
     "data": [
         "views/account_analytic_line_views.xml",
     ],
