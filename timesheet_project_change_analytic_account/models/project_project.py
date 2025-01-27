@@ -1,11 +1,26 @@
 # Copyright 2023 Numigi (tm) and all its contributors (https://bit.ly/numigiens)
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from odoo import models, api, _
+from odoo import api, models, _
 
 
 class ProjectProject(models.Model):
     _inherit = "project.project"
+
+    @api.onchange("analytic_account_id")
+    def _onchange_analytic_account_id(self):
+        if self.analytic_account_id:
+            return {
+                "warning": {
+                    "title": _("Warning!"),
+                    "message": _(
+                        "Please note, you have modified the analytic account. \n"
+                        "When saving, the project timelines will be updated with "
+                        "the new analytic account < %s >."
+                    )
+                    % self.analytic_account_id.name,
+                }
+            }
 
     def write(self, vals):
         """
@@ -20,18 +35,3 @@ class ProjectProject(models.Model):
             )
             timesheets.write({"account_id": vals["analytic_account_id"]})
         return True
-
-    @api.onchange("analytic_account_id")
-    def _onchange_account_id(self):
-        if self.analytic_account_id:
-            return {
-                "warning": {
-                    "title": _("Warning!"),
-                    "message": _(
-                        "Please note, you have modified the analytic account. \n"
-                        "When saving, the project timelines will be updated with "
-                        "the new analytic account < %s >."
-                    )
-                    % self.analytic_account_id.name,
-                }
-            }
