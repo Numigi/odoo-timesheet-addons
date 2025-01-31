@@ -12,7 +12,7 @@ USER odoo
 
 COPY hr_timesheet_project_parent_enhanced  /mnt/extra-addons/hr_timesheet_project_parent_enhanced
 COPY project_timesheet_time_control_sheet  /mnt/extra-addons/project_timesheet_time_control_sheet
-COPY timesheet_holidays_time_control_binding /mnt/extra-addons/timesheet_holidays_time_control_binding
+COPY timesheet_holidays_time_control_compatible /mnt/extra-addons/timesheet_holidays_time_control_compatible
 
 COPY .docker_files/main /mnt/extra-addons/main
 COPY .docker_files/odoo.conf /etc/odoo
