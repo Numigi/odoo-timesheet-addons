@@ -33,7 +33,7 @@ class TestValidateHolidayDate(TestHrHolidaysCommon):
         )
         allocation.action_validate()
 
-        # leave 1 only for 1 day or half
+        # Leave 1 only for 1 day or half
         leave1 = (
             self.env["hr.leave"]
             .with_user(self.user_employee_id)
@@ -53,7 +53,7 @@ class TestValidateHolidayDate(TestHrHolidaysCommon):
         self.assertEqual(
             leave1.sudo().timesheet_ids[0].date, leave1.sudo().date_from.date()
         )
-        # leave 2 more than 1 day
+        # Leave 2 more than 1 day
         date_start = fields.Datetime.from_string("2023-09-21 08:00:00")
         date_end = fields.Datetime.from_string("2023-09-22 17:00:00")
         leave2 = self.env["hr.leave"].create(
@@ -67,6 +67,9 @@ class TestValidateHolidayDate(TestHrHolidaysCommon):
         )
 
         leave2.sudo().action_validate()
+
+        # Ensure that each timesheet is having
+        # the correct date (start and end date in leave)
 
         self.assertEqual(len(leave2.timesheet_ids), 2)
         self.assertEqual(
