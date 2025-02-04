@@ -1,0 +1,80 @@
+# Copyright 2023-today Numigi (tm) and all its contributors (https://bit.ly/numigiens)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+
+from odoo import fields
+from odoo.addons.hr_holidays.tests.common import TestHrHolidaysCommon
+
+
+class TestValidateHolidayDate(TestHrHolidaysCommon):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+
+    def test_account_analytic_line_date(self):
+        leave_type = self.env["hr.leave.type"].create(
+            {
+                "name": "Paid Time Off",
+                "leave_validation_type": "hr",
+            }
+        )
+        allocation = (
+            self.env["hr.leave.allocation"]
+            .with_user(self.user_hruser_id)
+            .create(
+                {
+                    "name": "30 days allocation",
+                    "holiday_status_id": self.env.ref(
+                        "hr_holidays.holiday_status_training"
+                    ).id,
+                    "number_of_days": 30,
+                    "employee_id": self.employee_emp_id,
+                }
+            )
+        )
+        allocation.action_validate()
+
+        # Leave 1 only for 1 day or half
+        leave1 = (
+            self.env["hr.leave"]
+            .with_user(self.user_employee_id)
+            .create(
+                {
+                    "name": "Holiday 1 Day",
+                    "employee_id": self.employee_emp_id,
+                    "holiday_status_id": leave_type.id,
+                    "date_from": fields.Datetime.from_string("2023-09-20 08:00:00"),
+                    "date_to": fields.Datetime.from_string("2023-09-20 17:00:00"),
+                    "number_of_days": 1,
+                }
+            )
+        )
+        leave1.sudo().action_validate()
+
+        self.assertEqual(
+            leave1.sudo().timesheet_ids[0].date, leave1.sudo().date_from.date()
+        )
+        # Leave 2 more than 1 day
+        date_start = fields.Datetime.from_string("2023-09-21 08:00:00")
+        date_end = fields.Datetime.from_string("2023-09-22 17:00:00")
+        leave2 = self.env["hr.leave"].create(
+            {
+                "name": "Holiday 2 Days",
+                "employee_id": self.employee_emp_id,
+                "holiday_status_id": leave_type.id,
+                "date_from": date_start,
+                "date_to": date_end,
+            }
+        )
+
+        leave2.sudo().action_validate()
+
+        # Ensure that each timesheet is having
+        # the correct date (start and end date in leave)
+
+        self.assertEqual(len(leave2.timesheet_ids), 2)
+        self.assertEqual(
+            leave2.sudo().timesheet_ids[1].date, leave2.sudo().date_from.date()
+        )
+        self.assertEqual(
+            leave2.sudo().timesheet_ids[0].date, leave2.sudo().date_to.date()
+        )
