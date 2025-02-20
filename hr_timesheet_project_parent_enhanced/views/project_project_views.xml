@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_invoice_form" model="ir.ui.view">
+        <field name="name">Add timesheet time controls</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="hr_timesheet.project_invoice_form" />
+        <field name="arch" type="xml">
+            <div id="timesheet_settings" position="inside" >
+                <div class="o_setting_left_pane" attrs="{'invisible': [('allow_timesheets', '=', False)]}">
+                    <field name="is_parent_editable" />
+                </div>
+                <div class="o_setting_right_pane" attrs="{'invisible': [('allow_timesheets', '=', False)]}">
+                    <label for="is_parent_editable" string="Allow Parent Project Edit" />
+                    <div class="text-muted">
+                        Allow modifying the parent project even if there are existing timesheet lines.
+                    </div>
+                </div>
+            </div>
+        </field>
+    </record>
+</odoo>

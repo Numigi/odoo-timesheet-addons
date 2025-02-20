@@ -45,9 +45,14 @@ class TestProjectIterationWithTimeSheet(TransactionCase):
         self.assertEqual(line_2.parent_project_id, self.project_2)
 
     def test_block_setting_parent_on_project_with_timesheet(self):
-        self._create_timesheet(self.project_1)
+        self._create_timesheet(self.iteration_1)
         with pytest.raises(ValidationError):
-            self.project_1.parent_id = self.project_2
+            self.iteration_1.parent_id = self.project_2
+
+    def test_change_parent_on_project_with_timesheet(self):
+        self._create_timesheet(self.iteration_1)
+        self.iteration_1.is_parent_editable = True
+        self.iteration_1.parent_id = self.project_2
 
     def test_allow_setting_project_with_timesheet_as_parent(self):
         self._create_timesheet(self.project_1)
