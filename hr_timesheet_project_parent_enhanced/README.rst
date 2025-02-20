@@ -22,15 +22,14 @@ Features
 
 **Constraints on Parent Project Changes**
 
-    - This module introduces a configuration option that allows changing the parent project of a project even if it already contains timesheet entries. 
+This module introduces a configuration option that allows changing the parent project of a project even if it already contains timesheet entries. 
 
-    By default, this option is disabled, to **Raise ValidationError**  on changing parent project if 
-    timesheets already exist for the project.However, when enabled for a specific project, users can 
-    update the parent project without encountering validation constraints.
+By default, this option is disabled, to **Raise ValidationError**  on changing parent project if  timesheets already exist for the project.However, when enabled for a specific project, users can 
+update the parent project without encountering validation constraints.
 
 .. image:: static/description/error_change_parent_id.png
 
-    This setting can be configured in the **project form view** .
+This setting can be configured in the **project form view** .
 
 .. image:: static/description/project_form_view.png
 
