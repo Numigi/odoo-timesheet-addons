@@ -1,7 +1,8 @@
 Hr Timesheet Project Parent Enhanced
 ====================================
 
-This module adds constraints and features related to timesheets and parent-child relationships between projects. It enhances the existing functionalities provided by the OCA module `project_parent`, with a focus on timesheets and their integration into project hierarchies.
+This module adds constraints and features related to timesheets and parent-child relationships between projects.
+It enhances the existing functionalities provided by the OCA module `project_parent`, with a focus on timesheets and their integration into project hierarchies.
 
 Dependencies
 ------------
@@ -22,21 +23,28 @@ Features
 
 **Constraints on Parent Project Changes**
 
-    - Raise ValidationError on changing parent project if timesheets already exist for the project.
+This module introduces a configuration option that allows changing the parent project of a project even if it already contains timesheet entries. 
 
-.. image:: static/description/error_change_parent_id.png
+By default, this option is disabled, to **Raise ValidationError**  on changing parent project if  timesheets already exist for the project.However, when enabled for a specific project, users can 
+update the parent project without encountering validation constraints.
+
+.. image:: https://raw.githubusercontent.com/Numigi/odoo-timesheet-addons/16.0/hr_timesheet_project_parent_enhanced/static/description/error_change_parent_id.png
+
+This setting can be configured in the **project form view** .
+
+.. image:: https://raw.githubusercontent.com/Numigi/odoo-timesheet-addons/16.0/hr_timesheet_project_parent_enhanced/static/description/project_form_view.png
 
 **Enhanced Views**
     - Displays the parent project in analytic line views for better visibility (either in list or form view).
     eg. : `My parent project, My iteration`
 
-.. image:: static/description/parent_project_name_list_view.png
+.. image:: https://raw.githubusercontent.com/Numigi/odoo-timesheet-addons/16.0/hr_timesheet_project_parent_enhanced/static/description/parent_project_name_list_view.png
 
-.. image:: static/description/parent_project_name_form_view.png
+.. image:: https://raw.githubusercontent.com/Numigi/odoo-timesheet-addons/16.0/hr_timesheet_project_parent_enhanced/static/description/parent_project_name_form_view.png
 
     - Allows filtering timesheets based on the parent project.
 
-.. image:: static/description/hr_timesheet_search_view.png
+.. image:: https://raw.githubusercontent.com/Numigi/odoo-timesheet-addons/16.0/hr_timesheet_project_parent_enhanced/static/description/hr_timesheet_search_view.png
 
 Contributors
 ------------

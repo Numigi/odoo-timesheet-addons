@@ -16,6 +16,7 @@
     "depends": ["hr_timesheet", "project_parent_enhanced"],
     "data": [
         "views/account_analytic_line_views.xml",
+        "views/project_project_views.xml",
     ],
     "installable": True,
 }
