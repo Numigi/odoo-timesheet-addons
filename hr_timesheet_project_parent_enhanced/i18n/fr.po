@@ -16,9 +16,32 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: hr_timesheet_project_parent_enhanced
+#: model:ir.model.fields,field_description:hr_timesheet_project_parent_enhanced.field_project_project__is_parent_editable
+#: model_terms:ir.ui.view,arch_db:hr_timesheet_project_parent_enhanced.project_invoice_form
+msgid "Allow Parent Project Edit"
+msgstr "Autoriser la modification du projet parent"
+
+#. module: hr_timesheet_project_parent_enhanced
+#: model_terms:ir.ui.view,arch_db:hr_timesheet_project_parent_enhanced.project_invoice_form
+msgid ""
+"Allow modifying the parent project even if there are existing timesheet "
+"lines."
+msgstr ""
+"Permettre de modifier le projet parent même s'il existe des lignes de feuille de temps."
+
+#. module: hr_timesheet_project_parent_enhanced
 #: model:ir.model,name:hr_timesheet_project_parent_enhanced.model_account_analytic_line
 msgid "Analytic Line"
 msgstr "Ligne analytique"
+
+#. module: hr_timesheet_project_parent_enhanced
+#: model:ir.model.fields,help:hr_timesheet_project_parent_enhanced.field_project_project__is_parent_editable
+msgid ""
+"If checked, allows modifying the parent project even\n"
+"        if there are existing timesheet lines."
+msgstr ""
+"Si coché, permet de modifier le projet parent même\n"
+"        s'il existe des lignes de feuille de temps."
 
 #. module: hr_timesheet_project_parent_enhanced
 #: model:ir.model.fields,field_description:hr_timesheet_project_parent_enhanced.field_account_analytic_line__project_id
