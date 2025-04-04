@@ -12,10 +12,9 @@
     "summary": """Ensures that only open tasks are
     displayed when recording timesheets.""",
     "depends": [
-        "hr_timesheet",
         "hr_timesheet_sheet",
         "project_stage_closed",
-        "project_task_stage_allow_timesheet"
+        "project_task_stage_allow_timesheet",
     ],
-    "installable": True
+    "installable": True,
 }
