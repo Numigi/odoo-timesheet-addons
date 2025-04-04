@@ -23,6 +23,9 @@ As a user of timesheets, I perform the following steps:
 3. On the **Timesheet summary report**, I see that recorded timesheets respect the filtered task selection.  
    Tasks in closed stages are not available for timesheet entry.
 
+.. image:: static/description/timesheet_summary_report_1.png  
+   :alt: Timesheet summary report with only open tasks recorded
+
 .. image:: static/description/timesheet_summary_report.png  
    :alt: Timesheet summary report with only open tasks recorded
 

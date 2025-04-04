@@ -3,7 +3,7 @@
 
 {
     "name": "Timesheet filter closed task",
-    "version": "12.0.1.0.0",
+    "version": "12.0.1.0.1",
     "author": "Numigi",
     "maintainer": "Numigi",
     "website": "https://bit.ly/numigi-com",
@@ -12,9 +12,9 @@
     "summary": """Ensures that only open tasks are
     displayed when recording timesheets.""",
     "depends": [
-        "hr_timesheet",
+        "hr_timesheet_sheet",
         "project_stage_closed",
-        "project_task_stage_allow_timesheet"
+        "project_task_stage_allow_timesheet",
     ],
-    "installable": True
+    "installable": True,
 }
