@@ -19,14 +19,12 @@ class Sheet(models.Model):
 
     @api.onchange("add_line_project_id")
     def onchange_add_project_id(self):
-        """Load the project to the timesheet sheet"""
+        """Load the project to the timesheet sheet with safe domain update"""
+        res = super().onchange_add_project_id() or {}
+
         if self.add_line_project_id:
-            return {
-                "domain": {"add_line_task_id": self._task_domain()},
-            }
-        else:
-            return {
-                "domain": {
-                    "add_line_task_id": [("id", "=", False)],
-                },
-            }
+            domain = self._task_domain()
+            res.setdefault("domain", {})
+            res["domain"]["add_line_task_id"] = domain
+
+        return res
