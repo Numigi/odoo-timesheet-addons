@@ -1,6 +1,7 @@
-# Copyright Numigi 2025 (tm) and all its contributors
+# © Numigi 2025 (tm) and all its contributors
 # (https://numigi.com/r/home)
-# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+# License LGPL-3.0 or later
+# (http://www.gnu.org/licenses/lgpl).
 
 from odoo.tests.common import TransactionCase
 from odoo.exceptions import UserError
@@ -10,6 +11,7 @@ class TestHrTimesheetSheetConfirmReset(TransactionCase):
 
     def setUp(self):
         super(TestHrTimesheetSheetConfirmReset, self).setUp()
+
         # Create a test employee user
         self.employee_user = self.env['res.users'].create(
             {'name': 'Test Employee', 'login': 'employee_test', })
@@ -18,7 +20,7 @@ class TestHrTimesheetSheetConfirmReset(TransactionCase):
         group = self.env.ref('hr_timesheet.group_hr_timesheet_user')
         group.users = [(4, self.employee_user.id)]
 
-        # Create employee linked to the user
+        # Create the related employee record
         self.employee = self.env['hr.employee'].create(
             {'name': 'Test Employee', 'user_id': self.employee_user.id, })
 
@@ -42,5 +44,5 @@ class TestHrTimesheetSheetConfirmReset(TransactionCase):
         with self.assertRaises(UserError) as e:
             self.timesheet.action_confirm_reset()
         self.assertIn(
-            'Error: You cannot reset a timesheet that has already been approved',
+            'You cannot reset a timesheet that has already been approved',
             str(e.exception))

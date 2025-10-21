@@ -9,9 +9,11 @@ class TestSuggestions(SavepointCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.env["timesheet.description.template"].search(
-            []).write({"active": False}
-        )
+        cls.env[
+            "timesheet.description.template"
+        ].search([
+
+        ]).write({"active": False})
 
     @classmethod
     def _create_template(cls, term):
