@@ -7,7 +7,8 @@
     "category": "Project",
     "author": "Numigi",
     'website': 'https://www.numigi.com',
-    "summary": "Binding between the timesheet sheet and the time control widget",
+    "summary": "Binding between the timesheet "
+               "sheet and the time control widget",
     "depends": [
         "project_timesheet_time_control",
         "hr_timesheet_sheet",

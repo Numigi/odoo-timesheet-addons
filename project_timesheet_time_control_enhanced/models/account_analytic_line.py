@@ -24,7 +24,7 @@ class AccountAnalyticLine(models.Model):
         return True
 
     def _get_datetime_from_date(self):
-        """Convert a date to a UTC datetime string respecting user's timezone."""
+        """Convert date to UTC datetime string, respecting user's timezone."""
         naive_timestamp = datetime.combine(self.date, time.min)
         tz_name = self._context.get('tz') or self.env.user.tz or 'UTC'
         tz = pytz.timezone(tz_name)
