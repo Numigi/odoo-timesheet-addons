@@ -32,6 +32,7 @@ class TestHrTimesheetSheetConfirmReset(TransactionCase):
     def test_reset_to_draft_success(self):
         """Employee resets their own submitted sheet to draft."""
         self.timesheet = self.timesheet.with_user(self.employee_user)
+        self.timesheet.action_timesheet_confirm()
         result = self.timesheet.action_confirm_reset()
         self.assertTrue(result)
         self.assertEqual(self.timesheet.state, 'draft')
@@ -40,6 +41,8 @@ class TestHrTimesheetSheetConfirmReset(TransactionCase):
         """Resetting an already approved timesheet raises an error."""
         # Set timesheet state to 'done' (approved)
         self.timesheet.sudo().write({'state': 'done'})
+        self.timesheet.sudo().action_timesheet_confirm()
+        self.timesheet.sudo().action_timesheet_done()
         self.timesheet = self.timesheet.with_user(self.employee_user)
         with self.assertRaises(UserError) as e:
             self.timesheet.action_confirm_reset()
