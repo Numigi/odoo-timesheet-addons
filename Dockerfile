@@ -28,6 +28,7 @@ COPY project_timesheet_time_control_enhanced /mnt/extra-addons/project_timesheet
 COPY project_timesheet_time_control_sheet /mnt/extra-addons/project_timesheet_time_control_sheet
 COPY timesheet_description_template /mnt/extra-addons/timesheet_description_template
 COPY timesheet_holidays_time_control_compatible /mnt/extra-addons/timesheet_holidays_time_control_compatible
+COPY timeshet_sheet_confirm_reset /mnt/extra-addons/timeshet_sheet_confirm_reset
 
 #COPY timesheet_edit_only_today /mnt/extra-addons/timesheet_edit_only_today
 #COPY timesheet_edit_only_today_grid /mnt/extra-addons/timesheet_edit_only_today_grid
