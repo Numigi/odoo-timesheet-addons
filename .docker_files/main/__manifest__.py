@@ -24,7 +24,7 @@
         'project_timesheet_time_control_sheet',
         'timesheet_description_template',
         'timesheet_holidays_time_control_compatible',
-        'timeshet_sheet_confirm_reset',
+        'timesheet_sheet_confirm_reset',
         # 'timesheet_edit_only_today',
         # 'timesheet_edit_only_today_grid',
         # 'timesheet_list_description_after_task',
