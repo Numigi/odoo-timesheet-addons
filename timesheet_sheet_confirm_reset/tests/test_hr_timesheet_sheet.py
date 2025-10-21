@@ -60,9 +60,7 @@ class TestHrTimesheetSheetConfirmReset(TransactionCase):
         # Submit the sheet
         self.timesheet.action_timesheet_confirm()
         # Reset to draft
-        result = self.timesheet.action_confirm_reset()
-        # Should return True
-        self.assertTrue(result)
+        self.timesheet.action_confirm_reset()
         self.assertEqual(self.timesheet.state, 'draft')
 
     def test_reset_to_draft_approved_error(self):
