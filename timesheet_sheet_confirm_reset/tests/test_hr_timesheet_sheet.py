@@ -35,7 +35,9 @@ class TestHrTimesheetSheetConfirmReset(TransactionCase):
         })
 
         # Assign timesheet approver group
-        reviewer_group = self.env.ref('hr_timesheet.group_hr_timesheet_approver')
+        reviewer_group = self.env.ref(
+            'hr_timesheet.group_hr_timesheet_approver'
+        )
         reviewer_group.users = [(4, self.reviewer_user.id)]
 
         # Create reviewer employee
