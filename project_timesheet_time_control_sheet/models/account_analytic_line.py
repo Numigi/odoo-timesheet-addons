@@ -5,7 +5,6 @@ from odoo import api, models
 
 
 class AnalyticLine(models.Model):
-
     _inherit = "account.analytic.line"
 
     def unlink(self):

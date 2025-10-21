@@ -2,17 +2,20 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import datetime
-
 from odoo import models
 
 
 class HrLeave(models.Model):
     _inherit = "hr.leave"
 
-    def _timesheet_prepare_line_values(self, index, work_hours_data, day_date, work_hours_count):
+    def _timesheet_prepare_line_values(
+        self, index, work_hours_data, day_date, work_hours_count
+    ):
         self.ensure_one()
         timesheet_line = super()._timesheet_prepare_line_values(
-            index, work_hours_data, day_date, work_hours_count)
+            index, work_hours_data, day_date, work_hours_count
+        )
         timesheet_line["date_time"] = datetime.datetime.combine(
-            day_date, datetime.time(8, 00))
+            day_date, datetime.time(8, 0)
+        )
         return timesheet_line

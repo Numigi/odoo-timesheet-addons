@@ -6,7 +6,6 @@ from odoo.exceptions import ValidationError
 
 
 class Timesheet(models.Model):
-
     _inherit = "hr_timesheet.sheet"
 
     def action_timesheet_confirm(self):
@@ -14,7 +13,7 @@ class Timesheet(models.Model):
             if not line.unit_amount:
                 raise ValidationError(
                     _(
-                        "The timesheet can not be submitted because the "
+                        "The timesheet cannot be submitted because the "
                         "timesheet line {} has an open timer."
                     ).format(line.display_name)
                 )

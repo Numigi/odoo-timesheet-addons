@@ -8,12 +8,14 @@ from datetime import date, datetime
 
 @ddt
 class TestAccountAnalyticLine(common.SavepointCase):
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
         cls.env.user.tz = False
-        cls.analytic_account = cls.env["account.analytic.account"].create({"name": "A1"}
-        )
+        cls.analytic_account = cls.env["account.analytic.account"].create({
+            "name": "A1",
+        })
 
     @data(datetime(2016, 3, 24, 3), "2016-03-24 03:00:00")
     def test_create_analytic_line_with_datetime(self, datetime_):
@@ -52,24 +54,20 @@ class TestAccountAnalyticLine(common.SavepointCase):
         return (
             self.env["account.analytic.line"]
             .with_context(tz=tz)
-            .create(
-                {
-                    "name": "Test line",
-                    "date_time": datetime_,
-                    "account_id": self.analytic_account.id,
-                }
-            )
+            .create({
+                "name": "Test line",
+                "date_time": datetime_,
+                "account_id": self.analytic_account.id,
+            })
         )
 
     def _create_analytic_line_with_date(self, date_, tz=None):
         return (
             self.env["account.analytic.line"]
             .with_context(tz=tz)
-            .create(
-                {
-                    "name": "Test line",
-                    "date": date_,
-                    "account_id": self.analytic_account.id,
-                }
-            )
+            .create({
+                "name": "Test line",
+                "date": date_,
+                "account_id": self.analytic_account.id,
+            })
         )

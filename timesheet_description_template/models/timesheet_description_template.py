@@ -5,7 +5,6 @@ from odoo import api, fields, models
 
 
 class HrTimesheetDescriptionTemplate(models.Model):
-
     _name = "timesheet.description.template"
     _description = "Timesheet Description Template"
     _order = "name"
