@@ -35,8 +35,12 @@ class TestValidateHolidayDate(TestHrHolidaysCommon):
                 "name": "Holiday 1 Day",
                 "employee_id": employee.id,
                 "holiday_status_id": leave_type.id,
-                "date_from": fields.Datetime.from_string("2019-12-09 08:00:00"),
-                "date_to": fields.Datetime.from_string("2019-12-09 17:00:00"),
+                "date_from": fields.Datetime.from_string(
+                    "2019-12-09 08:00:00"
+                ),
+                "date_to": fields.Datetime.from_string(
+                    "2019-12-09 17:00:00"
+                ),
                 "number_of_days": 1,
             }
         )

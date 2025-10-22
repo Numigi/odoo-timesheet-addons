@@ -9,8 +9,10 @@
     "website": "https://numigi.com/r/home",
     "license": "AGPL-3",
     "category": "Project",
-    "depends": ["project_timesheet_holidays", "project_timesheet_time_control"],
-    "summary": "Confirm holiday with the holiday date not the validation date.",
+    "depends": ["project_timesheet_holidays",
+                "project_timesheet_time_control"],
+    "summary": "Confirm holiday with the holiday date"
+               " not the validation date.",
     "data": [],
     "installable": True,
 }
