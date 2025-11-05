@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* timesheet_confirm_reset
+# 	* timesheet_sheet_confirm_reset
 #
 msgid ""
 msgstr ""
@@ -15,56 +15,56 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: timesheet_confirm_reset
-#: model_terms:ir.ui.view,arch_db:timesheet_confirm_reset.view_hr_timesheet_sheet_form_inherit_submit_confirm
+#. module: timesheet_sheet_confirm_reset
+#: model_terms:ir.ui.view,arch_db:timesheet_sheet_confirm_reset.view_hr_timesheet_sheet_form_inherit_submit_confirm
 msgid "Are you sure you want to submit this timesheet?"
-msgstr "Êtes-vous sûr de vouloir soumettre cette feuille de temps ?"
+msgstr "Êtes-vous sûr de vouloir soumettre cette feuille de temps?"
 
-#. module: timesheet_confirm_reset
-#: model:ir.model.fields,field_description:timesheet_confirm_reset.field_hr_timesheet_sheet__display_name
+#. module: timesheet_sheet_confirm_reset
+#: model:ir.model.fields,field_description:timesheet_sheet_confirm_reset.field_hr_timesheet_sheet__display_name
 msgid "Display Name"
 msgstr "Nom affiché"
 
-#. module: timesheet_confirm_reset
-#: code:addons/timesheet_confirm_reset/models/hr_timesheet_sheet.py:0
+#. module: timesheet_sheet_confirm_reset
+#: code:addons/timesheet_sheet_confirm_reset/models/hr_timesheet_sheet.py:0
 #, python-format
 msgid "Error: You cannot reset a timesheet that has already been approved."
 msgstr "Erreur : vous ne pouvez pas remettre en brouillon une feuille de temps déjà approuvée."
 
-#. module: timesheet_confirm_reset
-#: model:ir.model.fields,field_description:timesheet_confirm_reset.field_hr_timesheet_sheet__id
+#. module: timesheet_sheet_confirm_reset
+#: model:ir.model.fields,field_description:timesheet_sheet_confirm_reset.field_hr_timesheet_sheet__id
 msgid "ID"
 msgstr "ID"
 
-#. module: timesheet_confirm_reset
-#: model:ir.model.fields,field_description:timesheet_confirm_reset.field_hr_timesheet_sheet____last_update
+#. module: timesheet_sheet_confirm_reset
+#: model:ir.model.fields,field_description:timesheet_sheet_confirm_reset.field_hr_timesheet_sheet____last_update
 msgid "Last Modified on"
 msgstr "Dernière modification le"
 
-#. module: timesheet_confirm_reset
-#: model_terms:ir.ui.view,arch_db:timesheet_confirm_reset.view_hr_timesheet_sheet_form_inherit_submit_confirm
+#. module: timesheet_sheet_confirm_reset
+#: model_terms:ir.ui.view,arch_db:timesheet_sheet_confirm_reset.view_hr_timesheet_sheet_form_inherit_submit_confirm
 msgid "Reset to Draft"
 msgstr "Remettre en brouillon"
 
-#. module: timesheet_confirm_reset
-#: code:addons/timesheet_confirm_reset/models/hr_timesheet_sheet.py:0
+#. module: timesheet_sheet_confirm_reset
+#: code:addons/timesheet_sheet_confirm_reset/models/hr_timesheet_sheet.py:0
 #, python-format
 msgid "The timesheet is already in draft state."
 msgstr "La feuille de temps est déjà en état brouillon."
 
-#. module: timesheet_confirm_reset
-#: model:ir.model,name:timesheet_confirm_reset.model_hr_timesheet_sheet
+#. module: timesheet_sheet_confirm_reset
+#: model:ir.model,name:timesheet_sheet_confirm_reset.model_hr_timesheet_sheet
 msgid "Timesheet Sheet"
 msgstr "Feuille de présence"
 
-#. module: timesheet_confirm_reset
-#: code:addons/timesheet_confirm_reset/models/hr_timesheet_sheet.py:0
+#. module: timesheet_sheet_confirm_reset
+#: code:addons/timesheet_sheet_confirm_reset/models/hr_timesheet_sheet.py:0
 #, python-format
 msgid "Timesheet not found."
 msgstr "Feuille de temps introuvable."
 
-#. module: timesheet_confirm_reset
-#: code:addons/timesheet_confirm_reset/models/hr_timesheet_sheet.py:0
+#. module: timesheet_sheet_confirm_reset
+#: code:addons/timesheet_sheet_confirm_reset/models/hr_timesheet_sheet.py:0
 #, python-format
 msgid "You can only reset your own timesheets."
 msgstr "Vous ne pouvez remettre en brouillon que vos propres feuilles de temps."
