@@ -5,7 +5,7 @@
 
 {
     'name': 'Timesheet Confirm Reset',
-    'version': '14.0.1.0.0',
+    'version': '14.0.1.0.1',
     'summary': 'Allow user to reset submitted timesheet to draft',
     'description': """
 This module implements:
