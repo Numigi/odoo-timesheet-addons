@@ -12,8 +12,8 @@
         HR Timesheet Group by Task Origin
         =================================
 
-        This module fixes the inconsistent task grouping behavior between Accounting 
-        and Project applications for analytic lines.
+        This module fixes the inconsistent task grouping behavior between
+        Accounting and Project applications for analytic lines.
 
         Issue:
         --------
@@ -23,8 +23,8 @@
 
         Solution:
         ---------
-        - Modifies the task grouping in Project app's Costs/Revenues view to use 
-          origin_task_id instead of task_id
+        - Modifies the task grouping in Project app's Costs/Revenues view to
+          use origin_task_id instead of task_id
         - Aligns the grouping behavior with Accounting app
         - Ensures consistent analytic reporting across applications
     """,
