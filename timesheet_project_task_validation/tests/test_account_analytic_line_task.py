@@ -32,6 +32,21 @@ class TestAccountAnalyticLineTaskRequired(TransactionCase):
             'name': 'John Doe',
         })
 
+        self.analytic_account = self.env['account.analytic.account'].create(
+            {
+                'name': 'Test Project Account',
+                'company_id': self.env.company.id,
+             })
+
+        self.analytic_line = self.env['account.analytic.line'].create(
+            {
+                'name': 'Test line',
+                'account_id': self.analytic_account.id,
+                'project_id': self.project.id,
+                'task_id': self.task.id,
+                'unit_amount': 1.0,
+        })
+
     # -------------------------------------------------------------------------
     # CREATE TESTS
     # -------------------------------------------------------------------------
