@@ -13,34 +13,26 @@ class TestTimesheet(common.SavepointCase):
         super().setUpClass()
         cls.yesterday = datetime.now() - timedelta(1)
         cls.user = cls.env["res.users"].create(
-            {
-                "name": "My User",
-                "login": "test",
-                "email": "test@test.com",
-            }
-        )
-        cls.project = cls.env["project.project"].create(
-            {"name": "My Project"}
-        )
+            {"name": "My User", "login": "test", "email": "test@test.com", })
+        cls.project = cls.env["project.project"].create({"name": "My Project"})
+
+        cls.analytic_account = cls.env["account.analytic.account"].create(
+            {"name": "Test Account", "company_id": cls.env.company.id, })
+
+        cls.task = cls.env["project.task"].create(
+            {"name": "My Task", "project_id": cls.project.id, })
+
         cls.employee = cls.env["hr.employee"].create(
-            {"name": "My Employee", "user_id": cls.user.id}
-        )
+            {"name": "My Employee", "user_id": cls.user.id})
         cls.sheet = cls.env["hr_timesheet.sheet"].create(
-            {
-                "employee_id": cls.employee.id,
-                "date_start": cls.yesterday.date(),
-                "date_end": cls.yesterday.date(),
-            }
-        )
+            {"employee_id": cls.employee.id, "date_start": cls.yesterday.date(),
+                "date_end": cls.yesterday.date(), })
         cls.line = cls.env["account.analytic.line"].create(
-            {
-                "employee_id": cls.employee.id,
-                "project_id": cls.project.id,
-                "unit_amount": 1,
-                "sheet_id": cls.sheet.id,
-                "date": cls.yesterday.date(),
-                "date_time": cls.yesterday,
-            })
+            {"employee_id": cls.employee.id, "project_id": cls.project.id,
+                "task_id": cls.task.id,  # AJOUT : La tâche est fournie
+                "account_id": cls.analytic_account.id,  # AJOUT : Le compte est fourni
+                "unit_amount": 1, "sheet_id": cls.sheet.id,
+                "date": cls.yesterday.date(), "date_time": cls.yesterday, })
 
     def test_sheet_not_propagated_to_new_line(self):
         wizard = self._new_wizard(self.line)
@@ -69,8 +61,6 @@ class TestTimesheet(common.SavepointCase):
 
     def _new_wizard(self, line):
         wizard_obj = self.env["hr.timesheet.switch"].with_context(
-            active_model=line._name,
-            active_id=line.id,
-        )
+            active_model=line._name, active_id=line.id, )
         defaults = wizard_obj.default_get(["date", "sheet_id"])
         return wizard_obj.new(defaults)

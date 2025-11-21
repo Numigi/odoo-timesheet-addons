@@ -20,7 +20,7 @@
         "project",
     ],
     "data": [
-        "views/hr_timesheet_sheet.xml"
+       # "views/hr_timesheet_sheet.xml"
     ],
     "installable": True,
 }

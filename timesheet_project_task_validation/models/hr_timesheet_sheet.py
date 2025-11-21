@@ -33,7 +33,6 @@ class HrTimesheetSheet(models.Model):
                 if (
                     rec.add_line_project_id
                     and not rec.add_line_task_id
-                    and self.env.context.get("timesheet_task_validation")
                 ):
                     raise exceptions.ValidationError(
                         _(

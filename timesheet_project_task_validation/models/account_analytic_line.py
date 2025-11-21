@@ -5,17 +5,6 @@ class AccountAnalyticLine(models.Model):
     _inherit = "account.analytic.line"
 
 
-    @api.model
-    def create(self, vals):
-        ctx = self.env.context.copy()
-        ctx.update({'timesheet_task_validation': True})
-        return super(AccountAnalyticLine, self.with_context(ctx)).create(vals)
-
-    def write(self, vals):
-        ctx = self.env.context.copy()
-        ctx.update({'timesheet_task_validation': True})
-        return super(AccountAnalyticLine, self.with_context(ctx)).write(vals)
-
     @api.constrains("project_id", "task_id")
     def _check_task_required(self):
         # Skip validation during tests or system operations
@@ -24,8 +13,7 @@ class AccountAnalyticLine(models.Model):
             self.env.context.get("test_mode"), self.env.context.get("test_enable"),
             self.env.context.get("test_disable"), ]):
             return
-        if not self.env.context.get("timesheet_task_validation"):
-            return
+
         for line in self:
             if not line.project_id:
                 continue
