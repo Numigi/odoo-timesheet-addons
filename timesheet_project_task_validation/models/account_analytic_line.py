@@ -9,12 +9,12 @@ class AccountAnalyticLine(models.Model):
     def create(self, vals):
         ctx = self.env.context.copy()
         ctx.update({'timesheet_task_validation': True})
-        return super(AccountAnalyticLine.with_context(ctx), self).create(vals)
+        return super(AccountAnalyticLine, self.with_context(ctx)).create(vals)
 
     def write(self, vals):
         ctx = self.env.context.copy()
         ctx.update({'timesheet_task_validation': True})
-        return super(AccountAnalyticLine.with_context(ctx), self).write(vals)
+        return super(AccountAnalyticLine, self.with_context(ctx)).write(vals)
 
     @api.constrains("project_id", "task_id")
     def _check_task_required(self):
