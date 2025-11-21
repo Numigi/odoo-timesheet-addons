@@ -1,6 +1,7 @@
 # © Numigi 2025 (tm) and all its contributors
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+# -*- coding: utf-8 -*-
 
 from odoo.tests.common import TransactionCase
 from odoo.exceptions import ValidationError
@@ -35,7 +36,8 @@ class TestAccountAnalyticLineTaskRequired(TransactionCase):
             {
                 'name': 'Test Project Account',
                 'company_id': self.env.company.id,
-             })
+            }
+        )
 
         self.analytic_line = self.env['account.analytic.line'].create(
             {
@@ -44,7 +46,8 @@ class TestAccountAnalyticLineTaskRequired(TransactionCase):
                 'project_id': self.project.id,
                 'task_id': self.task.id,
                 'unit_amount': 1.0,
-        })
+            }
+        )
 
     # -------------------------------------------------------------------------
     # CREATE TESTS
@@ -57,7 +60,7 @@ class TestAccountAnalyticLineTaskRequired(TransactionCase):
             'project_id': self.project.id,
             'task_id': self.task.id,
             'employee_id': self.employee.id,
-            'account_id': self.analytic_account.id,  # Ajout obligatoire
+            'account_id': self.analytic_account.id,
             'unit_amount': 2.0,
         })
         self.assertTrue(line.id)
@@ -68,7 +71,7 @@ class TestAccountAnalyticLineTaskRequired(TransactionCase):
             self.env['account.analytic.line'].create({
                 'name': 'Invalid AAL',
                 'project_id': self.project.id,   # project set
-                'account_id': self.analytic_account.id,  # Ajout obligatoire
+                'account_id': self.analytic_account.id,
                 # task_id not set → error expected
                 'employee_id': self.employee.id,
                 'unit_amount': 1.0,
@@ -79,7 +82,7 @@ class TestAccountAnalyticLineTaskRequired(TransactionCase):
         line = self.env['account.analytic.line'].create({
             'name': 'No Project AAL',
             # project_id not set → allowed
-            'account_id': self.analytic_account.id,  # Ajout obligatoire
+            'account_id': self.analytic_account.id,
             'employee_id': self.employee.id,
             'unit_amount': 1.0,
         })
@@ -94,7 +97,7 @@ class TestAccountAnalyticLineTaskRequired(TransactionCase):
         line = self.env['account.analytic.line'].create({
             'name': 'Initial AAL',
             'employee_id': self.employee.id,
-            'account_id': self.analytic_account.id,  # Ajout obligatoire
+            'account_id': self.analytic_account.id,
             'unit_amount': 1.0,
         })
 
@@ -109,7 +112,7 @@ class TestAccountAnalyticLineTaskRequired(TransactionCase):
         line = self.env['account.analytic.line'].create({
             'name': 'Initial Line',
             'employee_id': self.employee.id,
-            'account_id': self.analytic_account.id,  # Ajout obligatoire
+            'account_id': self.analytic_account.id,
             'unit_amount': 1.0,
         })
 
