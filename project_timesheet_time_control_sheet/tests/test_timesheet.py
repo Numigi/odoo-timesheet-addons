@@ -22,6 +22,21 @@ class TestTimesheet(common.SavepointCase):
         cls.project = cls.env["project.project"].create(
             {"name": "My Project"}
         )
+
+        # CORRECTION 1 : Créer un Compte Analytique
+        # (obligatoire pour éviter l'erreur SQL NotNullViolation)
+        cls.analytic_account = cls.env["account.analytic.account"].create({
+            "name": "Test Account",
+            "company_id": cls.env.company.id,
+        })
+
+        # CORRECTION 2 : Créer une Tâche
+        # (obligatoire si le module de validation est installé)
+        cls.task = cls.env["project.task"].create({
+            "name": "My Task",
+            "project_id": cls.project.id,
+        })
+
         cls.employee = cls.env["hr.employee"].create(
             {"name": "My Employee", "user_id": cls.user.id}
         )
@@ -36,6 +51,8 @@ class TestTimesheet(common.SavepointCase):
             {
                 "employee_id": cls.employee.id,
                 "project_id": cls.project.id,
+                "task_id": cls.task.id,
+                "account_id": cls.analytic_account.id,
                 "unit_amount": 1,
                 "sheet_id": cls.sheet.id,
                 "date": cls.yesterday.date(),

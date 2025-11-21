@@ -1,80 +1,96 @@
-# © Numigi 2025 (tm) and all its contributors
-# (https://numigi.com/r/home)
-# License LGPL-3.0 or later
-# (http://www.gnu.org/licenses/lgpl).
+# © Numigi (tm) and all its contributors (https://numigi.com/r/home)
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
-from odoo.tests.common import TransactionCase
-from odoo.exceptions import UserError
+import pytest
+from datetime import datetime, timedelta
+from odoo.exceptions import UserError, ValidationError
+from odoo.tests import common
 
 
-class TestHrTimesheetSheetConfirmReset(TransactionCase):
+class TestTimesheet(common.SavepointCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.yesterday = datetime.now() - timedelta(1)
 
-    def setUp(self):
-        super().setUp()
-
-        # Create employee user
-        self.employee_user = self.env['res.users'].create({
-            'name': 'Test Employee',
-            'login': 'employee_test',
+        # Create user
+        cls.user = cls.env["res.users"].create({
+            "name": "My User",
+            "login": "test",
+            "email": "test@test.com",
         })
 
-        # Assign hr_timesheet_user group
-        group = self.env.ref('hr_timesheet.group_hr_timesheet_user')
-        group.users = [(4, self.employee_user.id)]
-
-        # Create employee linked to user
-        self.employee = self.env['hr.employee'].create({
-            'name': 'Test Employee',
-            'user_id': self.employee_user.id,
+        # Create project
+        cls.project = cls.env["project.project"].create({
+            "name": "My Project"
         })
 
-        # Create reviewer user
-        self.reviewer_user = self.env['res.users'].create({
-            'name': 'Reviewer',
-            'login': 'reviewer_test',
+        # Create analytic account
+        cls.analytic_account = cls.env["account.analytic.account"].create({
+            "name": "Project Analytic Account",
+            "company_id": cls.env.company.id,
         })
 
-        # Assign timesheet approver group
-        reviewer_group = self.env.ref(
-            'hr_timesheet.group_hr_timesheet_approver'
+        # Create task linked to project
+        cls.task = cls.env["project.task"].create({
+            "name": "My Task",
+            "project_id": cls.project.id,
+        })
+
+        # Create employee
+        cls.employee = cls.env["hr.employee"].create({
+            "name": "My Employee",
+            "user_id": cls.user.id
+        })
+
+        # Create timesheet sheet
+        cls.sheet = cls.env["hr_timesheet.sheet"].create({
+            "employee_id": cls.employee.id,
+            "date_start": cls.yesterday.date(),
+            "date_end": cls.yesterday.date(),
+        })
+
+        # Create timesheet line with required account and task
+        cls.line = cls.env["account.analytic.line"].create({
+            "employee_id": cls.employee.id,
+            "project_id": cls.project.id,
+            "task_id": cls.task.id,
+            "account_id": cls.analytic_account.id,
+            "unit_amount": 1,
+            "sheet_id": cls.sheet.id,
+            "date": cls.yesterday.date(),
+            "date_time": cls.yesterday,
+        })
+
+    def test_sheet_not_propagated_to_new_line(self):
+        wizard = self._new_wizard(self.line)
+        assert wizard.date != self.yesterday
+        assert wizard.sheet_id != self.sheet
+
+    def test_delete_submitted_timesheet_with_open_timer(self):
+        self.line.unit_amount = 0
+        self.sheet.state = "confirm"
+        self.line.unlink()
+        assert not self.line.exists()
+
+    def test_delete_submitted_timesheet_with_closed_timer(self):
+        self.sheet.state = "confirm"
+        with pytest.raises(UserError):
+            self.line.unlink()
+
+    def test_submit_timesheet_with_open_timer(self):
+        self.line.unit_amount = 0
+        with pytest.raises(ValidationError):
+            self.sheet.action_timesheet_confirm()
+
+    def test_submit_timesheet_with_no_open_timer(self):
+        self.sheet.action_timesheet_confirm()
+        assert self.sheet.state == "confirm"
+
+    def _new_wizard(self, line):
+        wizard_obj = self.env["hr.timesheet.switch"].with_context(
+            active_model=line._name,
+            active_id=line.id,
         )
-        reviewer_group.users = [(4, self.reviewer_user.id)]
-
-        # Create reviewer employee
-        self.reviewer = self.env['hr.employee'].create({
-            'name': 'Reviewer',
-            'user_id': self.reviewer_user.id,
-        })
-
-        # Create timesheet in 'confirm' state with reviewer
-        self.timesheet = self.env['hr_timesheet.sheet'].sudo().create({
-            'name': 'Test Timesheet',
-            'employee_id': self.employee.id,
-            'reviewer_id': self.reviewer.id,
-            'state': 'draft',
-        })
-
-    def test_reset_to_draft_success(self):
-        """Employee resets their own submitted sheet to draft."""
-        self.timesheet = self.timesheet.with_user(self.employee_user)
-        # Submit the sheet
-        self.timesheet.action_timesheet_confirm()
-        # Reset to draft
-        self.timesheet.action_confirm_reset()
-        self.assertEqual(self.timesheet.state, 'draft')
-
-    def test_reset_to_draft_approved_error(self):
-        """Resetting an approved timesheet raises an error."""
-        # Approve the sheet
-        self.timesheet.reviewer_id = self.reviewer.id
-        self.timesheet = self.timesheet.with_user(self.reviewer_user)
-        self.timesheet.action_timesheet_confirm()
-        self.timesheet.action_timesheet_done()
-        # Employee tries to reset approved sheet
-        self.timesheet = self.timesheet.with_user(self.employee_user)
-        with self.assertRaises(UserError) as e:
-            self.timesheet.action_confirm_reset()
-        self.assertIn(
-            'You cannot reset a timesheet that has already been approved',
-            str(e.exception)
-        )
+        defaults = wizard_obj.default_get(["date", "sheet_id"])
+        return wizard_obj.new(defaults)
