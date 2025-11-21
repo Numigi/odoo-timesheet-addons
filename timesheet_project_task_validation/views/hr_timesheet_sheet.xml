@@ -5,11 +5,9 @@
             <field name="model">hr_timesheet.sheet</field>
             <field name="inherit_id" ref="hr_timesheet_sheet.hr_timesheet_sheet_form"/>
             <field name="arch" type="xml">
-
                 <xpath expr="//field[@name='add_line_task_id']" position="attributes">
                     <attribute name="context">{'default_project_id': add_line_project_id, 'timesheet_task_validation': True}</attribute>
                 </xpath>
-
                 <xpath expr="//button[@name='button_add_line']" position="attributes">
                     <attribute name="context">{'timesheet_task_validation': True}</attribute>
                 </xpath>

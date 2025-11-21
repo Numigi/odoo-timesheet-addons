@@ -7,13 +7,13 @@ class AccountAnalyticLine(models.Model):
 
     @api.model
     def create(self, vals):
-        ctx = dict(self.env.context)
-        ctx['timesheet_task_validation'] = True
+        ctx = self.env.context.copy()
+        ctx.update({'timesheet_task_validation': True})
         return super(AccountAnalyticLine.with_context(ctx), self).create(vals)
 
     def write(self, vals):
-        ctx = dict(self.env.context)
-        ctx['timesheet_task_validation'] = True
+        ctx = self.env.context.copy()
+        ctx.update({'timesheet_task_validation': True})
         return super(AccountAnalyticLine.with_context(ctx), self).write(vals)
 
     @api.constrains("project_id", "task_id")
