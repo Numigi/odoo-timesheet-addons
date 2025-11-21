@@ -19,6 +19,8 @@
         "hr_timesheet_sheet",
         "project",
     ],
-    "data": [],
+    "data": [
+        "views/hr_timesheet_sheet.xml"
+    ],
     "installable": True,
 }
