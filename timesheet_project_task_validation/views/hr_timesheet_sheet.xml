@@ -3,7 +3,7 @@
         <record id="hr_timesheet_sheet_form_inherit_task_validation" model="ir.ui.view">
             <field name="name">hr_timesheet.sheet.form.timesheet_task_validation</field>
             <field name="model">hr_timesheet.sheet</field>
-            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_sheet_form"/>
+            <field name="inherit_id" ref="hr_timesheet_sheet.hr_timesheet_sheet_form"/>
             <field name="arch" type="xml">
 
                 <xpath expr="//field[@name='add_line_task_id']" position="attributes">
