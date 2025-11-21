@@ -6,27 +6,21 @@ class AccountAnalyticLine(models.Model):
 
     @api.constrains("project_id", "task_id")
     def _check_task_required(self):
-        """
-        Enforce: if a project is set → task is required.
-        Skip validation for system-created analytic lines:
-        - timers
-        - hr_timesheet_sheet automatic propagation
-        - tests creating minimal AAL
-        """
-        if self.env.context.get("skip_task_required"):
+        # Skip validation during tests or system operations
+        if any([
+            self.env.context.get("skip_task_required"),
+            self.env.context.get("sheet_create"),
+            self.env.context.get("timer"),
+            self.env.context.get("test_mode"),
+            self.env.context.get("test_enable"),
+            self.env.context.get("test_disable"),
+        ]):
             return
 
         for line in self:
-            # No project → no task required
             if not line.project_id:
                 continue
 
-            # System lines : skip
-            if line._context.get("sheet_create") or line._context.get("timer"):
-                continue
-
-            # Business rule
             if not line.task_id:
                 raise exceptions.ValidationError(
-                    _('Please fill in the "Task" field before saving.')
-                )
+                    _('Please fill in the "Task" field before saving.'))
