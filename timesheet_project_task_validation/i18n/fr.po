@@ -1,0 +1,56 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * timesheet_project_task_validation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-24 07:45+0000\n"
+"PO-Revision-Date: 2025-11-24 07:45+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: timesheet_project_task_validation
+#: model:ir.model,name:timesheet_project_task_validation.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "Ligne analytique"
+
+#. module: timesheet_project_task_validation
+#: model:ir.model.fields,field_description:timesheet_project_task_validation.field_account_analytic_line__display_name
+#: model:ir.model.fields,field_description:timesheet_project_task_validation.field_hr_timesheet_sheet__display_name
+msgid "Display Name"
+msgstr "Nom d'affichage"
+
+#. module: timesheet_project_task_validation
+#: model:ir.model.fields,field_description:timesheet_project_task_validation.field_account_analytic_line__id
+#: model:ir.model.fields,field_description:timesheet_project_task_validation.field_hr_timesheet_sheet__id
+msgid "ID"
+msgstr "ID"
+
+#. module: timesheet_project_task_validation
+#: model:ir.model.fields,field_description:timesheet_project_task_validation.field_account_analytic_line____last_update
+#: model:ir.model.fields,field_description:timesheet_project_task_validation.field_hr_timesheet_sheet____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: timesheet_project_task_validation
+#: code:addons/timesheet_project_task_validation/models/hr_timesheet_sheet.py:0
+#, python-format
+msgid "Please fill in the \"Task\" field before adding a line."
+msgstr "Veuillez renseigner le champ \"Tâche\" avant d'ajouter une ligne."
+
+#. module: timesheet_project_task_validation
+#: code:addons/timesheet_project_task_validation/models/account_analytic_line.py:0
+#, python-format
+msgid "Please fill in the \"Task\" field before saving."
+msgstr "Veuillez renseigner le champ \"Tâche\" avant d'enregistrer."
+
+#. module: timesheet_project_task_validation
+#: model:ir.model,name:timesheet_project_task_validation.model_hr_timesheet_sheet
+msgid "Timesheet Sheet"
+msgstr "Feuille de présence"
